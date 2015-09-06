@@ -1,0 +1,15 @@
+language: node_js
+node_js:
+  - "0.12"
+before_script:
+  - npm install
+script: grunt
+deploy:
+  provider: script
+  script: scripts/deploy.js
+  debug: true
+  quiet: false
+  verbose: true
+  skip_cleanup: true
+  on:
+    branch: master
