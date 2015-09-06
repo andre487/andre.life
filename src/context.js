@@ -7,9 +7,34 @@ module.exports = {
     ].join(' '),
     socialNetworks: [
         {
+            title: 'GitHub',
+            login: 'Andre-487',
+            url: 'https://github.com/Andre-487'
+        },
+        {
             title: 'Twitter',
             login: 'Andre_487',
             url: 'https://twitter.com/Andre_487'
+        },
+        {
+            title: 'Facebook',
+            login: 'andre.487',
+            url: 'https://www.facebook.com/andre.487'
+        },
+        {
+            title: 'Instagram',
+            login: 'andre_487',
+            url: 'https://instagram.com/andre_487'
+        },
+        {
+            title: 'VK',
+            login: 'andre_dm',
+            url: 'https://vk.com/andre_dm'
+        },
+        {
+            title: 'Leprosorium',
+            login: 'Andre_487',
+            url: 'https://leprosorium.ru/users/Andre_487'
         }
     ]
 };
