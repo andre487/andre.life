@@ -1,3 +1,32 @@
-body {
+.page {
+    margin: 10px;
+    padding: 0;
+
     font-family: monospace;
+    font-size: 16px;
+}
+
+.document-section + .document-section {
+    margin-top: 20px;
+}
+
+.document-section__header {
+    margin: 0 0 15px 0;
+}
+
+.summary__text {
+    margin: 0;
+}
+
+.follow__list {
+    margin: 0;
+    padding: 0 0 0 35px;
+}
+
+.follow__list-item {
+    margin: 0;
+}
+
+.follow__list-item + .follow__list-item {
+    margin-top: 10px;
 }
