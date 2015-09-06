@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Andre-487/andre.life/issues"
   },
-  "homepage": "https://github.com/Andre-487/andre.life#readme"
+  "homepage": "https://github.com/Andre-487/andre.life#readme",
+  "devDependencies": {
+    "grunt": "^0.4.5"
+  }
 }

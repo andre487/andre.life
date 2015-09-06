@@ -49,3 +49,6 @@ crashlytics-build.properties
 
 # Node.js
 node_modules
+
+# Application
+build
