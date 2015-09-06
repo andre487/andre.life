@@ -1,0 +1,19 @@
+{
+  "name": "andre.life",
+  "version": "1.0.0",
+  "description": "My homepage",
+  "main": "build/index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Andre-487/andre.life.git"
+  },
+  "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/Andre-487/andre.life/issues"
+  },
+  "homepage": "https://github.com/Andre-487/andre.life#readme"
+}
