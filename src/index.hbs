@@ -3,13 +3,31 @@
     <head>
         <title>{{title}}</title>
         <meta charset="utf-8" />
-        <style>
-            body {
-                font-family: monospace;
-            }
-        </style>
+        <link rel="stylesheet" href="assets/styles.css" />
     </head>
-    <body>
-        {{{body}}}
+    <body class="page">
+        <section class="summary document-section">
+            <header>
+                <h1 class="summary__header document-section__header">{{title}}</h1>
+            </header>
+            <p class="summary__text">{{{summary}}}</p>
+        </section>
+        <section class="follow document-section">
+            <header>
+                <h1 class="follow__header document-section__header">Follow me on</h1>
+            </header>
+            <ul class="follow__list">
+                {{#each socialNetworks}}
+                    <li class="follow__list-item social-network">
+                        <span class="social-network__record">
+                            <strong class="social-network__title">{{this.title}}:</strong>
+                            <a class="social-network__login" href="{{this.url}}" target="_blank">
+                                {{this.login}}
+                            </a>
+                        </span>
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
     </body>
 </html>
