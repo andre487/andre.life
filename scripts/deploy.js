@@ -62,6 +62,9 @@ var rsyncCommand = createRsyncCommand({
     dstDir: DST_DIR,
     projectUser: PROJECT_USER
 });
-shell.exec(rsyncCommand);
+var res = shell.exec(rsyncCommand);
+if (res.code) {
+    throw new Error("Can't copy files");
+}
 
 shell.echo('Success!');
