@@ -9,11 +9,11 @@ var template = require('lodash.template');
 shell.config.fatal = true;
 
 var HOME = process.env.HOME;
-var KEY_FILE = path.join(HOME, '.ssh', 'id_rsa');
+var PROJECT_USER = process.env.PROJECT_USER;
+var DST_DIR = process.env.DST_DIR;
 
-var PROJECT_USER = 'data';
+var KEY_FILE = path.join(HOME, '.ssh', 'id_rsa');
 var SRC_DIR = './build/';
-var DST_DIR = '~/var/www/andre.life';
 
 var SSH_COMMAND = [
     'ssh',
