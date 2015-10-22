@@ -18,8 +18,8 @@ module.exports = {
         },
         {
             title: 'Facebook',
-            login: 'andre.487',
-            url: 'https://www.facebook.com/andre.487'
+            login: 'andre487',
+            url: 'https://www.facebook.com/profile.php?id=100001722691597'
         },
         {
             title: 'Instagram',
@@ -28,8 +28,8 @@ module.exports = {
         },
         {
             title: 'VK',
-            login: 'andre_dm',
-            url: 'https://vk.com/andre_dm'
+            login: 'andre487',
+            url: 'https://vk.com/andre487'
         },
         {
             title: 'Leprosorium',
