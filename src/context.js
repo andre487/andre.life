@@ -1,9 +1,9 @@
 module.exports = {
     title: 'Andrey Prokopyuk',
     summary: [
-        "Hello! My name is Andrey. I'm a developer in",
+        "Hello! My name is Andrey. I'm a developer at",
         '<a href="https://yandex.com" target="_blank">Yandex</a>,',
-        'working on Search Engine Result Page'
+        'working on the Search Engine Results Page'
     ].join(' '),
     socialNetworks: [
         {
