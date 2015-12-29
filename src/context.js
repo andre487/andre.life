@@ -8,8 +8,8 @@ module.exports = {
     socialNetworks: [
         {
             title: 'GitHub',
-            login: 'Andre-487',
-            url: 'https://github.com/Andre-487'
+            login: 'andre487',
+            url: 'https://github.com/andre487'
         },
         {
             title: 'Twitter',
