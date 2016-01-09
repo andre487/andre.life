@@ -5,17 +5,18 @@
   "main": "build/index.html",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Andre-487/andre.life.git"
+    "url": "https://github.com/andre487/andre.life.git"
   },
   "scripts": {
-    "setup-server": "cd .deployment/setup-server && ansible-playbook -i inventory playbook.yml"
+    "setup-server": "cd .deployment/setup-server && ansible-playbook -i inventory playbook.yml",
+    "renew-deploy-key": "travis encrypt-file ~/ansible-stuff/andre.life/www-data/deploy_id .deployment/ci/deploy_id.enc --decrypt-to=.deployment/ci/deploy_id"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/Andre-487/andre.life/issues"
+    "url": "https://github.com/andre487/andre.life/issues"
   },
-  "homepage": "https://github.com/Andre-487/andre.life#readme",
+  "homepage": "https://github.com/andre487/andre.life#readme",
   "devDependencies": {
     "grunt": "^0.4.5",
     "grunt-cli": "^0.1.13",

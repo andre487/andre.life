@@ -2,21 +2,21 @@
 var fs = require('fs');
 var path = require('path');
 
-var shell = require('shelljs');
+var sh = require('shelljs');
 var template = require('lodash.template');
 
 // Params
-shell.config.fatal = true;
+sh.config.fatal = true;
 
-var HOME = process.env.HOME;
 var PROJECT_USER = process.env.PROJECT_USER;
 var DST_DIR = process.env.DST_DIR;
 
-var KEY_FILE = path.join(HOME, '.ssh', 'id_rsa');
+var KEY_FILE = path.join(__dirname, 'deploy_id');
 var SRC_DIR = './build/';
 
 var SSH_COMMAND = [
     'ssh',
+    '-i ' + KEY_FILE,
     '-o stricthostkeychecking=no ',
     '-o userknownhostsfile=/dev/null ',
     '-o batchmode=yes ',
@@ -24,47 +24,25 @@ var SSH_COMMAND = [
 ].join(' ');
 
 var createRsyncCommand = template([
-    'rsync -e "${sshCommand}"',
+    'rsync -e "' + SSH_COMMAND + '"',
     '-av',
     '--delete',
     '${srcDir}',
     '${projectUser}@andre.life:${dstDir}'
 ].join(' '));
 
-// Auth
-shell.echo('Prepare auth');
-
-var sshRawKey = process.env.KEY;
-if (!sshRawKey) {
-    throw new Error('SSH key required');
-}
-
-var keyParts = /(-----BEGIN .+? PRIVATE KEY-----)(.+)(-----END .+? PRIVATE KEY-----)/.exec(sshRawKey);
-if (!keyParts) {
-    throw new Error('Invalid key format');
-}
-
-var sshKey = [
-    keyParts[1],
-    keyParts[2].trim().split(' ').join('\n'),
-    keyParts[3]
-].join('\n');
-
-fs.writeFileSync(KEY_FILE, sshKey);
-shell.chmod('600', KEY_FILE);
-
 // Deployment
-shell.echo('Deploy project');
+sh.echo('Deploy project');
 
 var rsyncCommand = createRsyncCommand({
-    sshCommand: SSH_COMMAND,
     srcDir: SRC_DIR,
     dstDir: DST_DIR,
     projectUser: PROJECT_USER
 });
-var res = shell.exec(rsyncCommand);
+
+var res = sh.exec(rsyncCommand);
 if (res.code) {
     throw new Error("Can't copy files");
 }
 
-shell.echo('Success!');
+sh.echo('Success!');
