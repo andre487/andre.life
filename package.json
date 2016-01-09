@@ -7,6 +7,9 @@
     "type": "git",
     "url": "git+https://github.com/Andre-487/andre.life.git"
   },
+  "scripts": {
+    "setup-server": "cd .deployment/setup-server && ansible-playbook -i inventory playbook.yml"
+  },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
   "license": "UNLICENSED",
   "bugs": {
