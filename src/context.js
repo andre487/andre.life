@@ -12,11 +12,6 @@ module.exports = {
             url: 'https://github.com/andre487'
         },
         {
-            title: 'Twitter',
-            login: 'Andre_487',
-            url: 'https://twitter.com/Andre_487'
-        },
-        {
             title: 'Facebook',
             login: 'andre487',
             url: 'https://www.facebook.com/profile.php?id=100001722691597'
@@ -27,14 +22,14 @@ module.exports = {
             url: 'https://instagram.com/andre_487'
         },
         {
-            title: 'VK',
-            login: 'andre487',
-            url: 'https://vk.com/andre487'
-        },
-        {
             title: 'Leprosorium',
             login: 'Andre_487',
             url: 'https://leprosorium.ru/users/Andre_487'
-        }
+        },
+        {
+            title: 'Twitter',
+            login: 'Andre_487',
+            url: 'https://twitter.com/Andre_487'
+        },
     ]
 };
