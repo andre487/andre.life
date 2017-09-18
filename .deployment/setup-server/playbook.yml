@@ -30,13 +30,5 @@
           --agree-tos \
           -m '{{ admin_email }}'
 
-    - name: Create cron.d certbot renew
-      template: src=cron.conf dest=/etc/cron.d/andre.life.conf
-      register: cron_res
-
-    - name: Restart cron
-      service: name=cron state=restarted
-      when: cron_res.changed
-
     - name: Restart NGINX
       service: name=nginx state=restarted
