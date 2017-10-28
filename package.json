@@ -8,8 +8,9 @@
     "url": "https://github.com/andre487/andre.life.git"
   },
   "scripts": {
-    "setup-server": "cd .deployment/setup-server && ansible-playbook -i inventory playbook.yml",
-    "renew-deploy-key": "travis encrypt-file ~/ansible-stuff/andre.life/www-data/deploy_id .deployment/ci/deploy_id.enc --decrypt-to=.deployment/ci/deploy_id"
+    "build": "grunt",
+    "setup": "cd .deploy && ansible-playbook -i ~/.private/ansible-inventory.yml setup.yml",
+    "make-install": "npm run build && npm run setup"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
   "license": "UNLICENSED",
