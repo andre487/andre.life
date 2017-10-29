@@ -21,6 +21,7 @@
         state: link
         src: /etc/nginx/sites-available/{{ http_domain }}.conf
         dest: /etc/nginx/sites-enabled/{{ http_domain }}.conf
+      when: no_ssl_config_res.changed
 
     - name: Install certificate
       shell: |
