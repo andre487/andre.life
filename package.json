@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "grunt",
-    "setup": "cd .deploy && ansible-playbook -i ~/.private/ansible-inventory.yml setup.yml",
+    "setup": "cd .deploy && ansible-playbook -i ~/work/ansible-inventory/ansible-inventory.yml setup.yml",
     "make-install": "npm run build && npm run setup"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
@@ -19,12 +19,12 @@
   },
   "homepage": "https://github.com/andre487/andre.life#readme",
   "devDependencies": {
-    "grunt": "^0.4.5",
-    "grunt-cli": "^0.1.13",
-    "grunt-compile-handlebars": "^2.0.0",
-    "grunt-contrib-clean": "^0.6.0",
-    "grunt-contrib-copy": "^0.8.1",
-    "lodash.template": "^3.6.2",
-    "shelljs": "^0.5.3"
+    "grunt": "1.0.4",
+    "grunt-cli": "1.3.2",
+    "grunt-compile-handlebars": "2.0.2",
+    "grunt-contrib-clean": "2.0.0",
+    "grunt-contrib-copy": "1.0.0",
+    "lodash.template": "4.5.0",
+    "shelljs": "0.8.3"
   }
 }
