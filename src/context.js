@@ -2,8 +2,8 @@ module.exports = {
     title: 'Andrey Prokopyuk',
     summary: [
         "Hello! My name is Andrey. I'm a developer at",
-        '<a href="https://yandex.com" target="_blank">Yandex</a>,',
-        'working on the Search Engine Results Page'
+        '<a href="https://yandex.com" target="_blank" rel="noopener">Yandex</a>,',
+        'working on the Yandex Translate'
     ].join(' '),
     buildTime: Date.now(),
     socialNetworks: [
