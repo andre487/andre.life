@@ -13,7 +13,7 @@
     "make-deploy": "npm run build && npm run setup"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/andre487/andre.life/issues"
   },
