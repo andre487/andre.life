@@ -43,29 +43,20 @@
 
         <section class="summary document-section">
             <header>
-                <h1 class="summary__header document-section__header">{{title}}</h1>
+                <h1 class="summary__header document-section__header document-section__header_no-margin">Wish list</h1>
+                <div class="back-link-container"><a href="." class="back-link">←</a></div>
             </header>
-            <p class="summary__text">{{{summary}}}</p>
         </section>
-        <section class="follow document-section">
-            <header>
-                <h2 class="follow__header document-section__header">Follow me on</h2>
-            </header>
-            <ul class="follow__list">
-                {{#each socialNetworks}}
-                    <li class="follow__list-item social-network">
-                        <span class="social-network__record">
-                            <strong class="social-network__title">{{this.title}}:</strong>
-                            <a class="social-network__login" href="{{this.url}}" target="_blank" rel="noopener">
-                                {{this.login}}
-                            </a>
-                        </span>
+        <section class="wish-list-container document-section">
+            <ul class="wish-list">
+                {{#each wishList}}
+                    <li class="wish-list__item">
+                        <a class="wish-list__link" href="{{this.link}}" target="_blank" rel="noopener">
+                            {{this.title}}
+                        </a>
                     </li>
                 {{/each}}
             </ul>
-        </section>
-        <section class="follow document-section">
-            I have a <a href="wish-list.html">wish list</a>
         </section>
     </body>
 </html>

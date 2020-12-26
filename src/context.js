@@ -31,5 +31,47 @@ module.exports = {
             login: 'Andre_487',
             url: 'https://twitter.com/Andre_487'
         },
+    ],
+    wishList: [
+        {
+            title: 'Цветной лазерный принтер',
+            link: 'https://market.yandex.ru/product--mfu-canon-i-sensys-mf744cdw/496794068?lr=213&track=char'
+        },
+        {
+            title: 'Фигурка Криса',
+            link: 'https://starfriend.ru/figurki-iz-resident-evil/figurka-resident-evil-5-chris-redfield-18sm?ymclid=16089830832123217702400001'
+        },
+        {
+            title: 'Фигурка Хранителя',
+            link: 'http://www.gamer.ru/evil-within-the/figurki-hranitelya'
+        },
+        {
+            title: 'Сигары Cohiba',
+            link: 'https://cigars-shop.ru/katalog/cigars/kubinskie/koiba/?sort=rating&order=DESC'
+        },
+        {
+            title: 'Сигары Montecristo',
+            link: 'https://cigars-shop.ru/katalog/cigars/kubinskie/montecristo/'
+        },
+        {
+            title: 'Трубка с сумкой',
+            link: 'https://puritos.ru/tobacco-pipes/nabori%20trubokk/'
+        },
+        {
+            title: 'Табак Samuel Gawith "Westmorland mixture"',
+            link: 'https://puritos.ru/samuel_gawith_westmorland_mixture_50%20https://puritos.ru/samuel_gawith_westmorland_mixture_50%20'
+        },
+        {
+            title: 'Табак Samuel Gawith "Cabbie\'s mixture"',
+            link: 'https://puritos.ru/gawith_cabbies_mixture_50%20'
+        },
+        {
+            title: 'Табак Samuel Gawith "Black cherry"',
+            link: 'https://puritos.ru/black_cherry'
+        },
+        {
+            title: 'Табак Samuel Gawith "Black cut Cavendish"',
+            link: 'https://puritos.ru/samuel_gawith_black_cut_cavendish_50'
+        },
     ]
 };

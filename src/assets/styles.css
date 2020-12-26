@@ -14,19 +14,29 @@
     margin: 0 0 15px 0;
 }
 
+.document-section__header_no-margin {
+    margin-bottom: 0;
+}
+
 .summary__text {
     margin: 0;
 }
 
-.follow__list {
+ul {
     margin: 0;
     padding: 0 0 0 35px;
 }
 
-.follow__list-item {
+li {
     margin: 0;
 }
 
-.follow__list-item + .follow__list-item {
+li + li {
     margin-top: 10px;
+}
+
+.back-link-container {
+    font-size: 24px;
+    font-weight: lighter;
+    margin: 0 0 10px 0;
 }
