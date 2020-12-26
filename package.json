@@ -10,7 +10,7 @@
   "scripts": {
     "build": "grunt",
     "setup": "cd .deploy && ansible-playbook -i ~/work/ansible-inventory/ansible-inventory.yml setup.yml",
-    "make-install": "npm run build && npm run setup"
+    "make-deploy": "npm run build && npm run setup"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (http://andre.life)",
   "license": "UNLICENSED",

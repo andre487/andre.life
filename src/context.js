@@ -5,6 +5,7 @@ module.exports = {
         '<a href="https://yandex.com" target="_blank">Yandex</a>,',
         'working on the Search Engine Results Page'
     ].join(' '),
+    buildTime: Date.now(),
     socialNetworks: [
         {
             title: 'GitHub',
