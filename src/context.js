@@ -8,14 +8,14 @@ module.exports = {
     buildTime: Date.now(),
     socialNetworks: [
         {
+            title: 'Twitter',
+            login: 'Andre_487',
+            url: 'https://twitter.com/Andre_487'
+        },
+        {
             title: 'GitHub',
             login: 'andre487',
             url: 'https://github.com/andre487'
-        },
-        {
-            title: 'Facebook',
-            login: 'andre487',
-            url: 'https://www.facebook.com/profile.php?id=100001722691597'
         },
         {
             title: 'Instagram',
@@ -28,9 +28,9 @@ module.exports = {
             url: 'https://leprosorium.ru/users/Andre_487'
         },
         {
-            title: 'Twitter',
-            login: 'Andre_487',
-            url: 'https://twitter.com/Andre_487'
+            title: 'Facebook',
+            login: 'andre487',
+            url: 'https://www.facebook.com/profile.php?id=100001722691597'
         },
     ],
     wishList: [
