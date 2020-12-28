@@ -74,5 +74,17 @@ module.exports = {
             title: 'Табак Samuel Gawith "Black cut Cavendish"',
             link: 'https://puritos.ru/samuel_gawith_black_cut_cavendish_50'
         },
+        {
+            title: 'Мадера сухая',
+            link: 'https://decanter.ru/madera/dry'
+        },
+        {
+            title: 'Мадера полусухая',
+            link: 'https://decanter.ru/madera/semi-dry'
+        },
+        {
+            title: 'Декантер',
+            link: 'https://decanter.ru/decanters'
+        }
     ]
 };
