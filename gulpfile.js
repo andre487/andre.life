@@ -1,8 +1,9 @@
 const crypto = require('crypto');
 const { promises: fs, existsSync, readFileSync } = require('fs');
 const gulp = require('gulp');
-const gulpHbs = require('gulp-compile-handlebars');
 const gulpCopy = require('gulp-copy');
+const gulpHbs = require('gulp-compile-handlebars');
+const gulpHtmlMinify = require('gulp-html-minifier');
 const gulpFilter = require('gulp-filter');
 const gulpRename = require('gulp-rename');
 const hbsLayouts = require('handlebars-layouts');
@@ -78,6 +79,21 @@ async function handleTemplates() {
     return gulp.src(await glob(tplPattern))
         .pipe(gulpFilter(['**', '!**/layout.hbs']))
         .pipe(gulpHbs(context, options))
+        .pipe(gulpHtmlMinify({
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            minifyCSS: true,
+            minifyJS: true,
+            removeAttributeQuotes: true,
+            removeComments: true,
+            removeOptionalTags: true,
+            removeRedundantAttributes: true,
+            removeScriptTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true,
+            sortAttributes: true,
+            sortClassName: true,
+            useShortDoctype: true,
+        }))
         .pipe(gulpRename(path => path.extname = '.html'))
         .pipe(gulp.dest(BUILD_DIR));
 }
