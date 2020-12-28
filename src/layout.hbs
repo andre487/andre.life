@@ -10,16 +10,17 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="stylesheet" href="assets/styles.css?t={{buildTime}}">
-        <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="stylesheet" href="{{asset "styles.css"}}">
+        <link rel="shortcut icon" href="{{asset "favicon.ico"}}" type="image/vnd.microsoft.icon">
 
         <meta property="og:title" content="andre487">
         <meta property="og:description" content="{{lookup socialText page}}">
-        <meta property="og:image" content="{{lookup socialPic page}}?t={{buildTime}}">
+        <meta property="og:image" content="{{asset (lookup socialPic page)}}">
+        <meta property="og:url" content="{{urlFor page}}">
 
         <meta name="twitter:title" content="andre487">
         <meta name="twitter:description" content="{{lookup socialText page}}">
-        <meta name="twitter:image" content="{{lookup socialPic page}}?t={{buildTime}}">
+        <meta name="twitter:image" content="{{asset (lookup socialPic page)}}">
         <meta name="twitter:card" content="summary_large_image">
 
         {{#block "head"}}{{/block}}
@@ -62,10 +63,12 @@
                     {{ lookup pageHeader page }}
                 </h1>
                 {{#ifNotEquals page "index"}}
-                <div class="back-link-container"><a href="." class="back-link">←</a></div>
+                <div class="back-link-container">
+                    <a href="{{urlFor "index"}}" class="back-link">←</a>
+                </div>
                 {{/ifNotEquals}}
                 {{#if (lookup summary page)}}
-                <p class="summary__text">{{lookup summary page}}</p>
+                <p class="summary__text">{{{lookup summary page}}}</p>
                 {{/if}}
             </header>
         </section>

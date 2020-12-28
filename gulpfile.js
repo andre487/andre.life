@@ -1,3 +1,4 @@
+const crypto = require('crypto');
 const { promises: fs, existsSync, readFileSync } = require('fs');
 const gulp = require('gulp');
 const gulpHbs = require('gulp-compile-handlebars');
@@ -10,6 +11,8 @@ const util = require('util');
 const glob = util.promisify(require('glob'));
 const rm = util.promisify(require('rimraf'));
 
+const BASE_URL_PATH = process.env['BASE_URL_PATH'] || '/';
+
 const PROJECT_DIR = path.dirname(__filename);
 const BUILD_DIR = path.join(PROJECT_DIR, 'build');
 const SRC_DIR = path.join(PROJECT_DIR, 'src');
@@ -18,6 +21,30 @@ const LAYOUT_FILE = path.join(SRC_DIR, 'layout.hbs');
 const handlebars = gulpHbs.Handlebars;
 hbsLayouts.register(handlebars);
 handlebars.registerPartial('layout', readFileSync(LAYOUT_FILE, 'utf8'));
+
+handlebars.registerHelper('urlFor', function(page) {
+    if (page == 'index') {
+        return BASE_URL_PATH;
+    }
+    const snakeCasePage = page.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+    return BASE_URL_PATH + snakeCasePage + '.html';
+});
+
+const assetCache = {};
+
+handlebars.registerHelper('asset', function(file) {
+    let version = assetCache[file];
+    if (!version) {
+        const hash = crypto.createHash('md5');
+        hash.update(readFileSync(path.join(SRC_DIR, 'assets', file)));
+
+        const digest = hash.digest();
+        const num = digest.readBigUInt64BE() + digest.readBigUInt64BE(8);
+
+        version = assetCache[file] = num.toString(36);
+    }
+    return `${BASE_URL_PATH}assets/${file}?v=${version}`;
+});
 
 handlebars.registerHelper('ifEquals', function(a, b, ops) {
     return a === b ? ops.fn(this) : ops.inverse(this);

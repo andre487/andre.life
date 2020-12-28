@@ -15,8 +15,8 @@ module.exports = {
         wishList: 'Wish list',
     },
     socialPic: {
-        index: 'assets/photo.jpg',
-        wishList: 'assets/amazing-horse.png',
+        index: 'photo.jpg',
+        wishList: 'amazing-horse.png',
     },
     summary: {
         index: [
