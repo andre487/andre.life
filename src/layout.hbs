@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="{{lang}}">
+    <head>
+        <title>
+            {{pageTitle}}
+            {{#if (lookup pageSubtitle page)}}
+                – {{lookup pageSubtitle page}}
+            {{/if}}
+        </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="assets/styles.css?t={{buildTime}}">
+        <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
+
+        <meta property="og:title" content="andre487">
+        <meta property="og:description" content="{{lookup socialText page}}">
+        <meta property="og:image" content="{{lookup socialPic page}}?t={{buildTime}}">
+
+        <meta name="twitter:title" content="andre487">
+        <meta name="twitter:description" content="{{lookup socialText page}}">
+        <meta name="twitter:image" content="{{lookup socialPic page}}?t={{buildTime}}">
+        <meta name="twitter:card" content="summary_large_image">
+
+        {{#block "head"}}{{/block}}
+    </head>
+    <body class="page">
+        <!-- Yandex.Metrika counter -->
+        <script type="text/javascript">
+            (function(d, w, c) {
+                (w[c] = w[c] || []).push(function() {
+                    try {
+                        w.yaCounter32861550 = new Ya.Metrika({
+                            id: 32861550,
+                            clickmap: true,
+                            trackLinks: true,
+                            accurateTrackBounce: true
+                        });
+                    } catch (e) { }
+                });
+
+                var n = d.getElementsByTagName("script")[0],
+                        s = d.createElement("script"),
+                        f = function() { n.parentNode.insertBefore(s, n); };
+                s.type = "text/javascript";
+                s.async = true;
+                s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                if (w.opera == "[object Opera]") {
+                    d.addEventListener("DOMContentLoaded", f, false);
+                } else { f(); }
+            })(document, window, "yandex_metrika_callbacks");
+        </script>
+        <noscript>
+            <div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" /></div>
+        </noscript>
+        <!-- /Yandex.Metrika counter -->
+
+        <section class="summary document-section">
+            <header>
+                <h1 class="summary__header document-section__header {{#if headerNoMargin}}document-section__header_no-margin{{/if}}">
+                    {{ lookup pageHeader page }}
+                </h1>
+                {{#ifNotEquals page "index"}}
+                <div class="back-link-container"><a href="." class="back-link">←</a></div>
+                {{/ifNotEquals}}
+                {{#if (lookup summary page)}}
+                <p class="summary__text">{{lookup summary page}}</p>
+                {{/if}}
+            </header>
+        </section>
+
+        {{#block "content"}}{{/block}}
+    </body>
+</html>

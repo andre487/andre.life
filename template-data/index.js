@@ -1,11 +1,31 @@
 module.exports = {
-    title: 'Andrey Prokopyuk',
-    summary: [
-        "Hello! My name is Andrey. I'm a developer at",
-        '<a href="https://yandex.com" target="_blank" rel="noopener">Yandex</a>,',
-        'working on the Yandex Translate'
-    ].join(' '),
     buildTime: Date.now(),
+    lang: 'en',
+    pageTitle: 'Andrey Prokopyuk',
+    pageSubtitle: {
+        index: '',
+        wishList: 'Wish list',
+    },
+    pageHeader: {
+        index: 'Andrey Prokopyuk',
+        wishList: 'Wish list',
+    },
+    socialText: {
+        index: 'Social links',
+        wishList: 'Wish list',
+    },
+    socialPic: {
+        index: 'assets/photo.jpg',
+        wishList: 'assets/amazing-horse.png',
+    },
+    summary: {
+        index: [
+            "Hello! My name is Andrey. I'm a developer at",
+            '<a href="https://yandex.com" target="_blank" rel="noopener">Yandex</a>,',
+            'working on the Yandex Translate'
+        ].join(' '),
+        wishList: ''
+    },
     socialNetworks: [
         {
             title: 'Twitter',

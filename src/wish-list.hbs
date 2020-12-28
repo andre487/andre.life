@@ -1,62 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <title>{{title}} – Wish list</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="google-site-verification" content="R71LZgXmhewXH4QOZl3IzTLY7iM7b2cq_rs7IQZIdzY" />
-
-        <link rel="stylesheet" href="assets/styles.css?t={{buildTime}}">
-        <link rel="shortcut icon" href="assets/favicon.ico" type="image/vnd.microsoft.icon">
-
-        <meta property="og:title" content="andre487">
-        <meta property="og:description" content="Wish list">
-        <meta property="og:image" content="assets/amazing-horse.png?t={{buildTime}}">
-        <meta property="og:url" content="wish-list.html">
-
-        <meta name="twitter:title" content="andre487">
-        <meta name="twitter:description" content="Wish list">
-        <meta name="twitter:image" content="assets/amazing-horse.png?t={{buildTime}}">
-        <meta name="twitter:card" content="summary_large_image">
-    </head>
-    <body class="page">
-        <!-- Yandex.Metrika counter -->
-        <script type="text/javascript">
-            (function(d, w, c) {
-                (w[c] = w[c] || []).push(function() {
-                    try {
-                        w.yaCounter32861550 = new Ya.Metrika({
-                            id: 32861550,
-                            clickmap: true,
-                            trackLinks: true,
-                            accurateTrackBounce: true
-                        });
-                    } catch (e) { }
-                });
-
-                var n = d.getElementsByTagName("script")[0],
-                        s = d.createElement("script"),
-                        f = function() { n.parentNode.insertBefore(s, n); };
-                s.type = "text/javascript";
-                s.async = true;
-                s.src = "https://mc.yandex.ru/metrika/watch.js";
-
-                if (w.opera == "[object Opera]") {
-                    d.addEventListener("DOMContentLoaded", f, false);
-                } else { f(); }
-            })(document, window, "yandex_metrika_callbacks");
-        </script>
-        <noscript>
-            <div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" /></div>
-        </noscript>
-        <!-- /Yandex.Metrika counter -->
-
-        <section class="summary document-section">
-            <header>
-                <h1 class="summary__header document-section__header document-section__header_no-margin">Wish list</h1>
-                <div class="back-link-container"><a href="." class="back-link">←</a></div>
-            </header>
-        </section>
+{{#extend "layout" page="wishList" lang="ru" headerNoMargin=true}}
+    {{#content "content"}}
         <section class="wish-list-container document-section">
             <ul class="wish-list">
                 {{#each wishList}}
@@ -68,5 +11,5 @@
                 {{/each}}
             </ul>
         </section>
-    </body>
-</html>
+    {{/content}}
+{{/extend}}
