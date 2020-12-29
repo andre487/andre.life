@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
     - uses: actions/checkout@v2
     - uses: actions/setup-node@v1
@@ -23,7 +23,7 @@ jobs:
         name: build.tar.gz
         path: build.tar.gz
   create_release:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: Create build tag
@@ -50,7 +50,7 @@ jobs:
     needs:
       - build
       - create_release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/download-artifact@v2
       - name: Get upload URL
