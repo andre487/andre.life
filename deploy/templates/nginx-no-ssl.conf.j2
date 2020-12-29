@@ -3,7 +3,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name {{ http_domain }};
+    server_name {{ http_domain }} www.{{ http_domain }};
 
     location / {
         root /var/www/{{ http_domain }}/build;

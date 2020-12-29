@@ -3,7 +3,7 @@ server {
     listen 443 ssl http2;
     listen [::]:443 ssl http2;
 
-    server_name {{ http_domain }};
+    server_name {{ http_domain }} www.{{ http_domain }};
 
     ssl on;
     ssl_certificate_key /etc/letsencrypt/live/{{ http_domain }}/privkey.pem;
@@ -23,7 +23,7 @@ server {
     listen 80;
     listen [::]:80;
 
-    server_name {{ http_domain }};
+    server_name {{ http_domain }} www.{{ http_domain }};
 
     location / {
         rewrite ^(.*)$ https://{{ http_domain }}$1 permanent;
