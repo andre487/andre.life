@@ -25,25 +25,35 @@
 
         {{#block "head"}}{{/block}}
     </head>
-    <body class="page">
-        <!-- Yandex.Metrika counter --><!--suppress JSValidateTypes, CommaExpressionJS -->
-        <script>(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(32861550, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });</script><noscript><div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt=""/></div></noscript><!-- /Yandex.Metrika counter -->
-        <section class="summary document-section">
-            <header>
-                <h1 class="summary__header document-section__header {{#if headerNoMargin}}document-section__header_no-margin{{/if}}">
-                    {{ lookup pageHeader page }}
-                </h1>
-                {{#ifNotEquals page "index"}}
+    <body>
+        <header class="summary document-section">
+            <h1 class="document-section__header {{#if headerNoMargin}}document-section__header_no-margin{{/if}}">
+                {{ lookup pageHeader page }}
+            </h1>
+            {{#ifNotEquals page "index"}}
                 <div class="back-link-container">
-                    <a href="{{urlFor "index"}}" class="back-link">←</a>
+                    <a href="{{urlFor "index"}}">←</a>
                 </div>
-                {{/ifNotEquals}}
-                {{#if (lookup summary page)}}
+            {{/ifNotEquals}}
+            {{#if (lookup summary page)}}
                 <p class="summary__text">{{{lookup summary page}}}</p>
-                {{/if}}
-            </header>
-        </section>
+            {{/if}}
+        </header>
 
         {{#block "content"}}{{/block}}
+
+        <!-- Yandex.Metrika counter -->
+        <!--suppress JSValidateTypes, CommaExpressionJS -->
+        <script>(function(m, e, t, r, i, k, a) {
+            m[i] = m[i] || function() {(m[i].a = m[i].a || []).push(arguments)};
+            m[i].l = 1 * new Date();
+            k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(
+                    k, a)
+        })(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+        ym(32861550, "init", { clickmap: true, trackLinks: true, accurateTrackBounce: true });</script>
+        <noscript>
+            <div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" /></div>
+        </noscript>
+        <!-- /Yandex.Metrika counter -->
     </body>
 </html>

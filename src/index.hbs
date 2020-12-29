@@ -4,26 +4,26 @@
     {{/content}}
 
     {{#content "content"}}
-        <section class="follow document-section">
+        <section class="document-section">
             <header>
-                <h2 class="follow__header document-section__header">Follow me on</h2>
+                <h2 class="document-section__header">Follow me on</h2>
             </header>
-            <ul class="follow__list">
+            <ul>
                 {{#each socialNetworks}}
-                    <li class="follow__list-item social-network">
-                    <span class="social-network__record">
-                        <strong class="social-network__title">{{this.title}}:</strong>
-                        <a class="social-network__login" href="{{this.url}}" target="_blank" rel="noopener">
+                    <li>
+                        <strong>{{this.title}}:</strong>
+                        <a href="{{this.url}}" target="_blank" rel="noopener">
                             {{this.login}}
                         </a>
-                    </span>
                     </li>
                 {{/each}}
             </ul>
         </section>
 
         <section class="document-section">
-            I have a <a href="wish-list.html">wish list</a>
+            I have a
+            <!--suppress HtmlUnknownTarget -->
+            <a href="wish-list.html">wish list</a>
         </section>
     {{/content}}
 {{/extend}}

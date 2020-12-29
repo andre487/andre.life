@@ -1,10 +1,10 @@
 {{#extend "layout" page="wishList" lang="ru" headerNoMargin=true}}
     {{#content "content"}}
-        <section class="wish-list-container document-section">
-            <ul class="wish-list">
+        <section class="document-section">
+            <ul>
                 {{#each wishList}}
-                    <li class="wish-list__item">
-                        <a class="wish-list__link" href="{{this.link}}" target="_blank" rel="noopener">
+                    <li>
+                        <a href="{{this.link}}" target="_blank" rel="noopener">
                             {{this.title}}
                         </a>
                     </li>

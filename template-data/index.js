@@ -79,19 +79,19 @@ module.exports = {
             link: 'https://puritos.ru/tobacco-pipes/nabori%20trubokk/'
         },
         {
-            title: 'Табак Samuel Gawith "Westmorland mixture"',
+            title: 'Табак Samuel Gawith «Westmorland mixture»',
             link: 'https://puritos.ru/samuel_gawith_westmorland_mixture_50%20https://puritos.ru/samuel_gawith_westmorland_mixture_50%20'
         },
         {
-            title: 'Табак Samuel Gawith "Cabbie\'s mixture"',
+            title: 'Табак Samuel Gawith «Cabbie\'s mixture»',
             link: 'https://puritos.ru/gawith_cabbies_mixture_50%20'
         },
         {
-            title: 'Табак Samuel Gawith "Black cherry"',
+            title: 'Табак Samuel Gawith «Black cherry»',
             link: 'https://puritos.ru/black_cherry'
         },
         {
-            title: 'Табак Samuel Gawith "Black cut Cavendish"',
+            title: 'Табак Samuel Gawith «Black cut Cavendish»',
             link: 'https://puritos.ru/samuel_gawith_black_cut_cavendish_50'
         },
         {

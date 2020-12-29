@@ -8,6 +8,7 @@
     "url": "https://github.com/andre487/andre.life.git"
   },
   "scripts": {
+    "dev-server": "cd build && python -m SimpleHTTPServer",
     "build": "gulp",
     "make-deploy": "npm run build && cd deploy && ansible-playbook -i ~/work/ansible-inventory/ansible-inventory.yml setup.yml"
   },
