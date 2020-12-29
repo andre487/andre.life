@@ -39,18 +39,12 @@ jobs:
           tag_name: ${{ steps.tag_version.outputs.new_tag }}
           release_name: Release ${{ steps.tag_version.outputs.new_tag }}
           body: ${{ steps.tag_version.outputs.changelog }}
-      - name: Save release metadata
-        uses: jsdaniell/create-json@1.1.2
-        with:
-          name: release-config.json
-          json:
-            tag_name: ${{ steps.tag_version.outputs.new_tag }}
-            release_name: Release ${{ steps.tag_version.outputs.new_tag }}
-            upload_url: ${{ steps.create_release.outputs.upload_url }}
+      - name: Store upload URL
+        run: echo -n "${{ steps.create_release.outputs.upload_url }}" > upload-url.txt
       - uses: actions/upload-artifact@v1
         with:
-          name: release-config.json
-          path: release-config.json
+          name: upload-url.txt
+          path: upload-url.txt
           retention-days: 1
   attach_build:
     needs:
@@ -61,7 +55,7 @@ jobs:
       - uses: actions/download-artifact@v2
       - name: Get upload URL
         id: upload_url
-        run: jq < release-config.json -r '.upload_url' | xargs -I{} echo "::set-output val={}"
+        run: cat upload-url.txt | xargs -I{} echo "::set-output val={}"
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
