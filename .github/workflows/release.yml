@@ -19,7 +19,6 @@ jobs:
       with:
         name: build.tar.gz
         path: build.tar.gz
-        retention-days: 1
   create_release:
     runs-on: ubuntu-latest
     steps:
@@ -45,7 +44,6 @@ jobs:
         with:
           name: upload-url.txt
           path: upload-url.txt
-          retention-days: 1
   attach_build:
     needs:
       - build
@@ -55,13 +53,13 @@ jobs:
       - uses: actions/download-artifact@v2
       - name: Get upload URL
         id: upload_url
-        run: cat upload-url.txt | xargs -I{} echo "::set-output val={}"
+        run: cat upload-url.txt/upload-url.txt | xargs -I{} echo "::set-output val={}"
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.upload_url.val }}
-          asset_path: build.tar.gz
+          asset_path: build.tar.gz/build.tar.gz
           asset_name: build.tar.gz
           asset_content_type: application/gzip
