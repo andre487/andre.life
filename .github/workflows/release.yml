@@ -53,13 +53,13 @@ jobs:
       - uses: actions/download-artifact@v2
       - name: Get upload URL
         id: upload_url
-        run: cat upload-url.txt/upload-url.txt | xargs -I{} echo "::set-output val={}"
+        run: cat upload-url.txt/upload-url.txt | xargs -I{} echo "::set-output name=val::{}"
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.upload_url.val }}
+          upload_url: ${{ steps.upload_url.outputs.val }}
           asset_path: build.tar.gz/build.tar.gz
           asset_name: build.tar.gz
           asset_content_type: application/gzip
