@@ -63,3 +63,10 @@
         src: ../build
         dest: /var/www/{{ http_domain }}
         delete: yes
+
+    - name: Setup build owner
+      file:
+        dest: /var/www/{{ http_domain }}
+        owner: www-data
+        group: www-data
+        recurse: yes
