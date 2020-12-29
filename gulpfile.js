@@ -72,14 +72,11 @@ async function prepareBuildDir() {
 
 async function handleTemplates() {
     const tplPattern = path.join(SRC_DIR, '**', '*.hbs');
-    const layout = path.join(SRC_DIR, 'layout.hbs');
-
     const context = require('./template-data');
-    const options = { defaultLayout: layout };
 
     return gulp.src(await glob(tplPattern))
         .pipe(gulpFilter(['**', '!**/layout.hbs']))
-        .pipe(gulpHbs(context, options))
+        .pipe(gulpHbs(context))
         .pipe(gulpHtmlMinify({
             collapseWhitespace: true,
             collapseBooleanAttributes: true,
