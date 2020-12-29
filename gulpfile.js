@@ -1,6 +1,7 @@
 const crypto = require('crypto');
 const { promises: fs, existsSync, readFileSync } = require('fs');
 const gulp = require('gulp');
+const gulpCleanCss = require('gulp-clean-css');
 const gulpCopy = require('gulp-copy');
 const gulpHbs = require('gulp-compile-handlebars');
 const gulpHtmlMinify = require('gulp-html-minifier');
@@ -98,10 +99,21 @@ async function handleTemplates() {
         .pipe(gulp.dest(BUILD_DIR));
 }
 
-function handleAssets() {
+function handleCssAssets() {
+    const srcAssets = path.join(PROJECT_DIR, 'src', 'assets', '**', '*');
+    const destAssets = path.join(BUILD_DIR, 'assets');
+
+    return gulp.src(srcAssets)
+        .pipe(gulpFilter('**/*.css'))
+        .pipe(gulpCleanCss())
+        .pipe(gulp.dest(destAssets));
+}
+
+function handleSimpleAssets() {
     const assets = path.join(PROJECT_DIR, 'src', 'assets', '**', '*');
 
     return gulp.src(assets)
+        .pipe(gulpFilter(['**', '!**/*.css']))
         .pipe(gulpCopy(BUILD_DIR, { prefix: 1 }));
 }
 
@@ -116,7 +128,8 @@ exports.default = gulp.series(
     prepareBuildDir,
     gulp.parallel(
         handleTemplates,
-        handleAssets,
+        handleCssAssets,
+        handleSimpleAssets,
         handleRootFiles,
     )
 );

@@ -20,6 +20,7 @@
   "devDependencies": {
     "glob": "7.1.6",
     "gulp": "4.0.2",
+    "gulp-clean-css": "4.3.0",
     "gulp-cli": "2.3.0",
     "gulp-compile-handlebars": "0.6.1",
     "gulp-copy": "4.0.1",
