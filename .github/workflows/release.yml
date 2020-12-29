@@ -77,5 +77,7 @@ jobs:
         run: cd build && tar -xzvf build.tar.gz && rm build.tar.gz
       - name: Get deploy key
         run: echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
+      - name: Add known host
+        run: ssh-keygen -R andre.life
       - name: Copy files
         run: rsync -av --delete -e "ssh -v -i deploy_key" "build/" "www-data@andre.life:/var/www/andre.life/build"
