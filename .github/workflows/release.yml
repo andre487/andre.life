@@ -12,9 +12,12 @@ jobs:
     - uses: actions/setup-node@v1
       with:
         node-version: '12'
-    - run: npm ci
-    - run: npm run build
-    - run: cd build && tar -cvzf ../build.tar.gz . && cd ..
+    - name: Install dependencies
+      run: npm ci
+    - name: Build site
+      run: npm run build
+    - name: Create build.tar.gz
+      run: cd build && tar -cvzf ../build.tar.gz . && cd ..
     - uses: actions/upload-artifact@v1
       with:
         name: build.tar.gz
@@ -23,7 +26,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Create tag
+      - name: Create build tag
         id: tag_version
         uses: mathieudutour/github-tag-action@v5
         with:
@@ -54,7 +57,7 @@ jobs:
       - name: Get upload URL
         id: upload_url
         run: cat upload-url.txt/upload-url.txt | xargs -I{} echo "::set-output name=val::{}"
-      - name: Upload Release Asset
+      - name: Attach release asset
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
