@@ -72,9 +72,9 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build.tar.gz
-          path: .
+          path: build
       - name: Unpack build
-        run: tar -xzvf build.tar.gz build
+        run: cd build && tar -xzvf build.tar.gz && rm build.tar.gz
       - name: Get deploy key
         run: echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
       - name: Copy files
