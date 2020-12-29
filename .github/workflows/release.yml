@@ -78,4 +78,4 @@ jobs:
       - name: Get deploy key
         run: echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
       - name: Copy files
-        run: rsync -av --delete -e "ssh -i deploy_key" "build/" "andre.life:/var/www/andre.life/build"
+        run: rsync -av --delete -e "ssh -v -i deploy_key" "build/" "www-data@andre.life:/var/www/andre.life/build"
