@@ -1,9 +1,9 @@
-const crypto = require('crypto');
 const { promises: fs, existsSync, readFileSync } = require('fs');
 const gulp = require('gulp');
 const gulpCleanCss = require('gulp-clean-css');
 const gulpCopy = require('gulp-copy');
 const gulpHbs = require('gulp-compile-handlebars');
+const gulpHelpers = require('./gulp-helpers');
 const gulpHtmlMinify = require('gulp-html-minifier');
 const gulpFilter = require('gulp-filter');
 const gulpRename = require('gulp-rename');
@@ -12,8 +12,6 @@ const path = require('path');
 const util = require('util');
 const glob = util.promisify(require('glob'));
 const rm = util.promisify(require('rimraf'));
-
-const BASE_URL_PATH = process.env['BASE_URL_PATH'] || '/';
 
 const PROJECT_DIR = path.dirname(__filename);
 const BUILD_DIR = path.join(PROJECT_DIR, 'build');
@@ -24,37 +22,7 @@ const handlebars = gulpHbs.Handlebars;
 hbsLayouts.register(handlebars);
 handlebars.registerPartial('layout', readFileSync(LAYOUT_FILE, 'utf8'));
 
-handlebars.registerHelper('urlFor', function(page) {
-    if (page == 'index') {
-        return BASE_URL_PATH;
-    }
-    const snakeCasePage = page.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-    return BASE_URL_PATH + snakeCasePage + '.html';
-});
-
-const assetCache = {};
-
-handlebars.registerHelper('asset', function(file) {
-    let version = assetCache[file];
-    if (!version) {
-        const hash = crypto.createHash('md5');
-        hash.update(readFileSync(path.join(SRC_DIR, 'assets', file)));
-
-        const digest = hash.digest();
-        const num = digest.readBigUInt64BE() + digest.readBigUInt64BE(8);
-
-        version = assetCache[file] = num.toString(36);
-    }
-    return `${BASE_URL_PATH}assets/${file}?v=${version}`;
-});
-
-handlebars.registerHelper('ifEquals', function(a, b, ops) {
-    return a === b ? ops.fn(this) : ops.inverse(this);
-});
-
-handlebars.registerHelper('ifNotEquals', function(a, b, ops) {
-    return a !== b ? ops.fn(this) : ops.inverse(this);
-});
+gulpHelpers.registerHbsHelpers(handlebars);
 
 async function prepareBuildDir() {
     if (!existsSync(BUILD_DIR)) {
@@ -93,6 +61,7 @@ async function handleTemplates() {
             useShortDoctype: true,
         }))
         .pipe(gulpRename(path => path.extname = '.html'))
+        .pipe(gulpHelpers.addCspHashes())
         .pipe(gulp.dest(BUILD_DIR));
 }
 
