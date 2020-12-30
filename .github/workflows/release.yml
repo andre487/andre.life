@@ -78,4 +78,4 @@ jobs:
       - name: Get deploy key
         run: echo "${{ secrets.DEPLOY_KEY }}" > deploy_key && chmod 600 deploy_key
       - name: Copy files
-        run: rsync -av --delete -e "ssh -oStrictHostKeyChecking=accept-new -v -i deploy_key" "build/" "www-data@andre.life:/var/www/andre.life/build"
+        run: rsync -av --delete -e "ssh -oStrictHostKeyChecking=accept-new -v -i deploy_key" "build/" "${{ secrets.DEPLOY_USER }}@{{ secrets.DEPLOY_HOST }}:/var/www/{{ secrets.HTTP_DOMAIN }}/build"
