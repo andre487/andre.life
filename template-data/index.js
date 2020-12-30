@@ -1,5 +1,4 @@
 module.exports = {
-    buildTime: Date.now(),
     lang: 'en',
     pageTitle: 'Andrey Prokopyuk',
     pageSubtitle: {
@@ -33,14 +32,14 @@ module.exports = {
             url: 'https://twitter.com/Andre_487'
         },
         {
-            title: 'GitHub',
-            login: 'andre487',
-            url: 'https://github.com/andre487'
-        },
-        {
             title: 'Instagram',
             login: 'andre_487',
             url: 'https://instagram.com/andre_487'
+        },
+        {
+            title: 'GitHub',
+            login: 'andre487',
+            url: 'https://github.com/andre487'
         },
         {
             title: 'Leprosorium',
