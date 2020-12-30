@@ -65,19 +65,17 @@ jobs:
           asset_path: build.tar.gz/build.tar.gz
           asset_name: build.tar.gz
           asset_content_type: application/gzip
-#  deploy:
-#    needs: [build]
-#    runs-on: ubuntu-20.04
-#    steps:
-#      - uses: actions/download-artifact@v2
-#        with:
-#          name: build.tar.gz
-#          path: build
-#      - name: Unpack build
-#        run: cd build && tar -xzvf build.tar.gz && rm build.tar.gz
-#      - name: Get deploy key
-#        run: echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
-#      - name: Add known host
-#        run: ssh-keygen -R andre.life
-#      - name: Copy files
-#        run: rsync -av --delete -e "ssh -v -i deploy_key" "build/" "www-data@andre.life:/var/www/andre.life/build"
+  deploy:
+    needs: [build]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build.tar.gz
+          path: build
+      - name: Unpack build
+        run: cd build && tar -xzvf build.tar.gz && rm build.tar.gz
+      - name: Get deploy key
+        run: echo "${{ secrets.DEPLOY_KEY }}" > deploy_key
+      - name: Copy files
+        run: rsync -av --delete -e "ssh -oStrictHostKeyChecking=accept-new -v -i deploy_key" "build/" "www-data@andre.life:/var/www/andre.life/build"
