@@ -9,6 +9,8 @@ server {
     ssl_certificate_key /etc/letsencrypt/live/{{ http_domain }}/privkey.pem;
     ssl_certificate /etc/letsencrypt/live/{{ http_domain }}/fullchain.pem;
 
+    add_header Cache-Control "public, max-age=300, must-revalidate, no-transform";
+    add_header Content-Security-Policy "default-src 'none'; style-src 'self'; script-src 'self' https://mc.yandex.ru https://yastatic.net 'nonce-39c9c0b1'; connect-src 'self' https://mc.yandex.ru; img-src 'self' https://mc.yandex.ru; child-src 'self' blob: https://mc.yandex.ru; frame-src 'self' blob: https://mc.yandex.ru;";
     add_header X-XSS-Protection "1; mode=block";
     add_header Strict-Transport-Security "max-age=86400";
     add_header X-Frame-Options "SAMEORIGIN";
