@@ -10,7 +10,7 @@
   "scripts": {
     "dev-server": "cd build && python -m SimpleHTTPServer",
     "build": "gulp",
-    "make-deploy": "npm run build && cd deploy && ansible-playbook -i ~/work/ansible-inventory/ansible-inventory.yml setup.yml"
+    "make-deploy": "npm run build && cd deploy && ansible-playbook setup.yml"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",
   "license": "MIT",
