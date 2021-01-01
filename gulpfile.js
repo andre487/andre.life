@@ -48,6 +48,7 @@ async function handleTemplates() {
         .pipe(gulpHtmlMinify({
             collapseWhitespace: true,
             collapseBooleanAttributes: true,
+            ignoreCustomComments: [/Yandex\.Metrika counter/],
             minifyCSS: true,
             minifyJS: true,
             removeAttributeQuotes: true,
