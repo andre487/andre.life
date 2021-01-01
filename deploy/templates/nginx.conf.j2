@@ -14,7 +14,7 @@ server {
     add_header X-Frame-Options "SAMEORIGIN";
     add_header X-Content-Type-Options nosniff;
 
-    location ~ \.(jpe?g|png|svg|css|js) {
+    location ~ \.(jpe?g|png|svg|css|js|ico) {
         add_header Cache-Control "public, max-age=315360000, no-transform";
         root /var/www/{{ http_domain }}/build;
     }
