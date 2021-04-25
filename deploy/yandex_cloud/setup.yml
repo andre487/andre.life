@@ -1,0 +1,27 @@
+- hosts: all
+
+  become: yes
+  become_method: sudo
+
+  tasks:
+    - name: Create web root
+      file:
+        dest: /var/www
+        state: directory
+        owner: '{{ host_user }}'
+        group: '{{ host_user }}'
+        mode: 0755
+
+    - name: Copy build to server
+      synchronize:
+        src: ../build/
+        dest: /var/www
+        delete: yes
+
+    - name: Setup build owner
+      file:
+        dest: /var/www
+        owner: '{{ host_user }}'
+        group: '{{ host_user }}'
+        recurse: yes
+        mode: 0755
