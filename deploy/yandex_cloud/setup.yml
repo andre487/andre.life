@@ -3,13 +3,30 @@
   become: yes
   become_method: sudo
 
+  vars:
+    deploy_user_name: '{{ lookup("file", "{{ secret_dir }}/deploy_user_name") }}'
+    deploy_user_ssh_dir: '/home/{{ lookup("file", "{{ secret_dir }}/deploy_user_name") }}/.ssh'
+
   tasks:
+    - name: Setup deploy user
+      user:
+        name: '{{ deploy_user_name }}'
+        password: '!'
+        append: yes
+        groups:
+          - www-data
+
+    - name: Setup deploy user authorized_key
+      authorized_key:
+        key: '{{ lookup("file", "{{ secret_dir }}/deploy_user_id_rsa.pub") }}'
+        user: '{{ deploy_user_name }}'
+
     - name: Create web root
       file:
         dest: /var/www
         state: directory
-        owner: '{{ host_user }}'
-        group: '{{ host_user }}'
+        owner: '{{ deploy_user_name }}'
+        group: www-data
         mode: 0755
 
     - name: Copy build to server
@@ -21,7 +38,6 @@
     - name: Setup build owner
       file:
         dest: /var/www
-        owner: '{{ host_user }}'
-        group: '{{ host_user }}'
+        owner: '{{ deploy_user_name }}'
+        group: www-data
         recurse: yes
-        mode: 0755
