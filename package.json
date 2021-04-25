@@ -31,6 +31,7 @@
     "gulp-html-minifier": "0.1.8",
     "gulp-rename": "2.0.0",
     "handlebars-layouts": "3.1.4",
+    "lodash.template": "^4.5.0",
     "rimraf": "3.0.2",
     "through2": "4.0.2",
     "yargs-parser": "^20.2.7"
