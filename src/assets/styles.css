@@ -1,16 +1,47 @@
+:root {
+    /* https://www.materialui.co/colors */
+    --color-blue-grey-100: #eceff1;
+    --color-blue-grey-900: #263238;
+    --color-grey-100: #fafafa;
+    --color-grey-900: #212121;
+    --color-blue-200: #bbdefb;
+    --color-blue-900: #0d47a1;
+    --color-purple-200: #ce93d8;
+    --color-purple-900: #4a148c;
+
+    --page-bg-color: var(--color-grey-100);
+    --text-color: var(--color-blue-grey-900);
+    --link-base-color: var(--color-blue-900);
+    --link-hover-color: var(--color-purple-900);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --page-bg-color: var(--color-grey-900);
+        --text-color: var(--color-blue-grey-100);
+        --link-base-color: var(--color-purple-200);
+        --link-hover-color: var(--color-blue-200);
+    }
+}
+
 body {
     margin: 10px;
     padding: 0;
+
+    background-color: var(--page-bg-color);
+    color: var(--text-color);
 
     font-family: monospace;
     font-size: 18px;
 }
 
 a:link, a:visited {
+    color: var(--link-base-color);
     text-decoration: none;
 }
 
 a:hover, a:active {
+    color: var(--link-hover-color);
     text-decoration: underline;
 }
 
@@ -45,6 +76,5 @@ li + li {
 
 .back-link-container {
     font-size: 24px;
-    font-weight: lighter;
     margin: 0 0 10px 0;
 }

@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "python3 -m http.server 8000 --bind localhost --directory build",
     "build": "gulp",
+    "build-watch": "gulp watch",
     "make-deploy": "deploy/yandex_cloud/setup_site.sh"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",

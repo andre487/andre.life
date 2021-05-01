@@ -91,6 +91,10 @@ function handleRootFiles() {
         .pipe(gulpCopy(BUILD_DIR, { prefix: 2 }));
 }
 
+exports.watch = function() {
+    gulp.watch(['src/**/*'], exports.default);
+};
+
 exports.default = gulp.series(
     prepareBuildDir,
     gulp.parallel(
