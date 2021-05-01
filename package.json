@@ -8,9 +8,9 @@
     "url": "https://github.com/andre487/andre.life.git"
   },
   "scripts": {
-    "dev-server": "cd build && python -m SimpleHTTPServer",
+    "dev": "python3 -m http.server 8000 --bind localhost --directory build",
     "build": "gulp",
-    "make-deploy": "npm run build && cd deploy && ansible-playbook setup.yml"
+    "make-deploy": "deploy/yandex_cloud/setup_site.sh"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",
   "license": "MIT",
