@@ -46,23 +46,25 @@ async function handleTemplates() {
         .pipe(gulpFilter(['**', '!**/layout.hbs']))
         .pipe(gulpHbs(context))
         .pipe(gulpHtmlMinify({
-            collapseWhitespace: true,
-            collapseBooleanAttributes: true,
-            ignoreCustomComments: [/Yandex\.Metrika counter/],
             minifyCSS: true,
             minifyJS: true,
-            removeAttributeQuotes: true,
             removeComments: true,
-            removeOptionalTags: true,
+            ignoreCustomComments: [/Yandex\.Metrika counter/],
             removeRedundantAttributes: true,
             removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true,
+            removeStyleLinkTypeAttributes: true
+        }))
+        .pipe(gulpHelpers.addCspHashes())
+        .pipe(gulpHtmlMinify({
+            collapseWhitespace: true,
+            collapseBooleanAttributes: true,
+            removeAttributeQuotes: true,
+            removeOptionalTags: true,
             sortAttributes: true,
             sortClassName: true,
             useShortDoctype: true,
         }))
         .pipe(gulpRename(path => path.extname = '.html'))
-        .pipe(gulpHelpers.addCspHashes())
         .pipe(gulp.dest(BUILD_DIR));
 }
 
@@ -91,11 +93,7 @@ function handleRootFiles() {
         .pipe(gulpCopy(BUILD_DIR, { prefix: 2 }));
 }
 
-exports.watch = function() {
-    gulp.watch(['src/**/*'], exports.default);
-};
-
-exports.default = gulp.series(
+const build = gulp.series(
     prepareBuildDir,
     gulp.parallel(
         handleTemplates,
@@ -104,3 +102,13 @@ exports.default = gulp.series(
         handleRootFiles,
     )
 );
+
+gulp.task('build', build);
+gulp.task('default', build);
+
+gulp.task('watch', gulp.series(
+    build,
+    function watchFiles() {
+        gulp.watch(['src/*', 'src/**/*'], build);
+    }
+));

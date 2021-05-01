@@ -94,3 +94,8 @@ li + li {
     margin: 0.2rem 0 0.85rem 0;
     font-family: 'Arial', sans-serif;
 }
+
+.one-pixel {
+    position: absolute;
+    left: -9999px;
+}

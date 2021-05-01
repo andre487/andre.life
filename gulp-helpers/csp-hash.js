@@ -1,87 +1,33 @@
+const htmlParser = require('node-html-parser');
 const CspPolicy = require('csp-parse');
 const cspHash = require('csp-hash-generator');
 const through = require('through2');
 
-function splitFileByInlineTags(content) {
-    const itChunks = content.matchAll(/<((?:script)|(?:style))[^>]*?>(.+?)<\/(?:(?:script)|(?:style))>/gi);
+function addCspHashes(html) {
+    const root = htmlParser.parse(html);
 
-    const chunks = [];
-    let prevEnd = 0;
-
-    for (const { 0: outerHtml, 1: type, 2: innerHtml, index: start } of itChunks) {
-        chunks.push({
-            type: 'passive',
-            outerHtml: content.slice(prevEnd, start),
-        }, {
-            type,
-            outerHtml,
-            innerHtml,
-        });
-        prevEnd = start + outerHtml.length;
+    const styleHashes = new Set();
+    for (const node of root.querySelectorAll('style')) {
+        styleHashes.add(cspHash(node.textContent));
     }
 
-    chunks.push({
-        type: 'passive',
-        outerHtml: content.slice(prevEnd),
-    });
-
-    const firstChunk = chunks.shift();
-    const metaCspMatch = firstChunk.outerHtml.match(/<meta[^>]+?Content-Security-Policy[^>]*?>/i);
-
-    if (!metaCspMatch) {
-        throw new Error('No CSP meta tag in the first chunk');
+    let wasInlineStyle = false;
+    for (const node of root.querySelectorAll('[style]')) {
+        styleHashes.add(cspHash(node.getAttribute('style')));
+        wasInlineStyle = true;
     }
 
-    const { 0: outerHtml, index: start } = metaCspMatch;
-    const end = start + outerHtml.length;
-
-    chunks.unshift({
-        type: 'passive',
-        outerHtml: firstChunk.outerHtml.slice(0, start),
-    }, {
-        type: 'meta',
-        outerHtml,
-    }, {
-        type: 'passive',
-        outerHtml: firstChunk.outerHtml.slice(end),
-    });
-
-    return chunks;
-}
-
-function subscribeTags(chunks) {
-    let metaIdx = -1;
-    let meta;
-
-    const styleHashes = [];
-    const scriptHashes = [];
-
-    for (let i = 0; i < chunks.length; ++i) {
-        const chunk = chunks[i];
-        if (chunk.type == 'passive') {
-            continue;
-        }
-
-        if (chunk.type == 'meta') {
-            meta = chunk;
-            metaIdx = i;
-            continue;
-        }
-
-        const hash = cspHash(chunk.innerHtml);
-        if (chunk.type == 'style') {
-            styleHashes.push(hash);
-        } else {
-            scriptHashes.push(hash);
-        }
+    const scriptHashes = new Set();
+    for (const node of root.querySelectorAll('script')) {
+        scriptHashes.add(cspHash(node.textContent));
     }
 
-    const policyMatch = meta.outerHtml.match(/<meta.+content="(.+?)".*>/i);
-    if (!policyMatch) {
-        throw new Error('Can not parse CSP meta tag');
+    const metaCsp = root.querySelector('meta[http-equiv="Content-Security-Policy"]');
+    const policy = new CspPolicy(metaCsp.getAttribute('content'));
+    if (wasInlineStyle) {
+        policy.add('style-src', "'unsafe-hashes'");
     }
 
-    const policy = new CspPolicy(policyMatch[1]);
     for (const hash of styleHashes) {
         policy.add('style-src', `'${hash}'`);
     }
@@ -89,16 +35,9 @@ function subscribeTags(chunks) {
     for (const hash of scriptHashes) {
         policy.add('script-src', `'${hash}'`);
     }
+    metaCsp.setAttribute('content', policy.toString());
 
-    meta.outerHtml = `<meta content="${policy.toString()}" http-equiv=Content-Security-Policy>`;
-}
-
-function compileChunks(chunks) {
-    let result = '';
-    for (const chunk of chunks) {
-        result += chunk.outerHtml;
-    }
-    return result;
+    return root.toString();
 }
 
 module.exports = function() {
@@ -112,10 +51,8 @@ module.exports = function() {
         }
 
         try {
-            const chunks = splitFileByInlineTags(file.contents.toString());
-            subscribeTags(chunks);
-            file.contents = Buffer.from(compileChunks(chunks));
-
+            const newHtml = addCspHashes(file.contents.toString());
+            file.contents = Buffer.from(newHtml);
             callback(null, file);
         } catch (e) {
             callback(e);
