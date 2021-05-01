@@ -16,14 +16,16 @@ server {
     root /usr/share/nginx/html;
     index index.html;
 
-    add_header Cache-Control "public, max-age=600, must-revalidate, no-transform";
-    add_header X-XSS-Protection "1; mode=block";
-    add_header X-Frame-Options "deny";
-    add_header X-Content-Type-Options "nosniff";
-
     location ~ \.(jpe?g|png|webp|svg|css|js|ico) {
         if ($arg_v) {
             add_header Cache-Control "public, max-age=315360000, no-transform";
         }
+    }
+
+    location / {
+        add_header Cache-Control "public, max-age=3600, must-revalidate, no-transform";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Frame-Options "deny";
+        add_header X-Content-Type-Options "nosniff";
     }
 }

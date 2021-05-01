@@ -66,3 +66,14 @@
       when: container_conf.changed
       debug:
         var: container_conf.stdout_lines
+
+    - name: Restart VM
+      when: nginx_conf.changed
+      local_action: command yc compute instance restart --name "$MACHINE_NAME"
+      become: no
+      register: restart_vm
+
+    - name: Show Restart VM result
+      when: restart_vm.changed
+      debug:
+        var: restart_vm.stdout_lines
