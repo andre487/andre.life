@@ -8,6 +8,17 @@
     deploy_user_ssh_dir: '/home/{{ lookup("file", "{{ secret_dir }}/deploy_user_name") }}/.ssh'
 
   tasks:
+    - name: Create nginx conf.d
+      file:
+        dest: /etc/nginx/conf.d
+        state: directory
+
+    - name: Setup NGINX site config
+      template:
+        src: ../provision/nginx.conf.tpl
+        dest: /etc/nginx/conf.d/site.conf
+      register: nginx_conf
+
     - name: Setup deploy user
       user:
         name: '{{ deploy_user_name }}'
@@ -41,3 +52,17 @@
         owner: '{{ deploy_user_name }}'
         group: www-data
         recurse: yes
+
+    - name: Pass NGINX conf to container
+      when: nginx_conf.changed
+      local_action: >-
+        ansible.builtin.shell yc compute instance update-container \
+            --name "$MACHINE_NAME" \
+            --container-volume-host-path 'name=site-conf,mount-path=/etc/nginx/conf.d,host-path=/etc/nginx/conf.d,ro=true'
+      become: no
+      register: container_conf
+
+    - name: Show NGINX conf to container result
+      when: container_conf.changed
+      debug:
+        var: container_conf.stdout_lines

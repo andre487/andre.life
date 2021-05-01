@@ -57,7 +57,7 @@ is_prod_machine_online() {
     local ip_addr
 
     ip_addr="$(get_prod_machine)"
-    if ssh -o "StrictHostKeyChecking no" -i "$ID_RSA" "$HOST_USER@$ip_addr" true; then
+    if ssh -o "StrictHostKeyChecking accept-new" -i "$ID_RSA" "$HOST_USER@$ip_addr" true; then
         echo 1
     else
         echo 0
