@@ -20,3 +20,23 @@ socialNetworks:
   - title: Facebook
     login: andre487
     url: https://www.facebook.com/profile.php?id=100001722691597
+techTalks:
+  - link: https://youtu.be/Whm2FMBIgA0
+    autoSnippet: true
+    description:
+      - >-
+        Выступление на&nbsp;Holy.js о&nbsp;том, как&nbsp;подойти к&nbsp;скорости веб-сервиса
+        как&nbsp;к&nbsp;систематической деятельности: от&nbsp;построения измерений,
+        через&nbsp;инструменты к&nbsp;оптимизациям
+      - >-
+        Доклад был двойной, вторая часть&nbsp;–
+        <a href="https://youtu.be/TzCMDlYMydA" target="_blank" rel="noopener">о&nbsp;тонкостях создания инструментов</a>
+        от&nbsp;<a href="https://twitter.com/st00nsa" target="_blank" rel="noopener">Алексея&nbsp;Калмакова</a>
+  - link: https://youtu.be/NhQL6jRMlZI
+    autoSnippet: true
+    description:
+      - Рассказ на Яндекс.Субботнике о&nbsp;том, как&nbsp;мы&nbsp;работаем над&nbsp;скоростью Поиска в&nbsp;Яндексе
+  - link: https://youtu.be/CnsrImdBYz8
+    autoSnippet: true
+    description:
+      - Круглый стол Avito по&nbsp;скорости фронтенда с&nbsp;моим участием

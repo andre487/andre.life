@@ -1,0 +1,50 @@
+.tech-talks {
+    list-style: none;
+    max-width: 1024px;
+    margin: 0;
+    padding: 0;
+}
+
+.tech-talks__item {
+    overflow: hidden;
+}
+
+.tech-talks__item + .tech-talks__item {
+    margin-top: 1rem;
+}
+
+.tech-talks__link_pic {
+    display: block;
+    float: left;
+    margin-right: 1rem;
+}
+
+.tech-talks__link_title {
+    display: block;
+}
+
+.tech-talks__header {
+    display: inline;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.tech-talks__published {
+    margin: 0.4rem 0;
+    color: var(--color-blue-grey-300);
+    font-size: 0.8rem;
+}
+
+.tech-talks__description {
+    overflow: hidden;
+    font-size: 0.85rem;
+}
+
+.tech-talks__paragraph {
+    margin: 0;
+    line-height: 1.3em;
+}
+
+.tech-talks__paragraph + .tech-talks__paragraph {
+    margin-top: 0.8rem;
+}

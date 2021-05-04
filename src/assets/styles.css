@@ -1,6 +1,7 @@
 :root {
     /* https://www.materialui.co/colors */
     --color-blue-grey-100: #eceff1;
+    --color-blue-grey-300: #90a4ae;
     --color-blue-grey-900: #263238;
     --color-grey-100: #fafafa;
     --color-grey-900: #212121;
@@ -14,6 +15,8 @@
     --link-base-color: var(--color-blue-900);
     --link-hover-color: var(--color-purple-900);
 
+    --font-weight: normal;
+
     font-size: 18px;
     font-family: -apple-system, 'BlinkMacSystemFont',
         'Segoe UI', 'Roboto',
@@ -26,6 +29,8 @@
         --text-color: var(--color-blue-grey-100);
         --link-base-color: var(--color-purple-200);
         --link-hover-color: var(--color-blue-200);
+
+        --font-weight: lighter;
     }
 }
 
@@ -37,16 +42,22 @@ body {
     color: var(--text-color);
 
     font-size: 1rem;
+    font-weight: var(--font-weight);
 }
 
 h1 {
     font-size: 2rem;
-    font-weight: normal;
+    font-weight: var(--font-weight);
 }
 
 h2 {
     font-size: 1.5rem;
-    font-weight: normal;
+    font-weight: var(--font-weight);
+}
+
+h3 {
+    font-size: 1.2rem;
+    font-weight: var(--font-weight);
 }
 
 a:link, a:visited {
@@ -73,7 +84,7 @@ li + li {
 }
 
 .document-section + .document-section {
-    margin-top: 1.2rem;
+    margin-top: 1.5rem;
 }
 
 .document-section__header {

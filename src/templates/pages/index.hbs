@@ -5,14 +5,18 @@
 
     {{#content "description"}}A home page of Andrey Prokopyuk{{/content}}
 
+    {{#content "head"}}
+        <link rel="stylesheet" href="{{asset "index.css"}}">
+    {{/content}}
+
     {{#content "content"}}
         <section class="document-section">
             <header>
                 <h2 class="document-section__header">Follow me on</h2>
             </header>
-            <ul>
+            <ul class="social-networks">
                 {{#each socialNetworks}}
-                    <li>
+                    <li class="social-networks__item">
                         {{this.title}}:
                         <a href="{{this.url}}" target="_blank" rel="noopener">
                             {{this.login}}
@@ -26,6 +30,32 @@
             I have a
             <!--suppress HtmlUnknownTarget -->
             <a href="wish-list.html">wish list</a>
+        </section>
+
+        <section class="document-section" lang="ru">
+            <header>
+                <h2 class="document-section__header">Технические выступления</h2>
+            </header>
+            <ul class="tech-talks">
+                {{#each techTalks}}
+                    <li class="tech-talks__item">
+                        <a href="{{this.link}}" class="tech-talks__link_pic" target="_blank" rel="noopener">
+                            <img src="{{this.pic.url}}" alt='Картинка для доклада "{{this.title}}"' width="{{this.pic.width}}" height="{{this.pic.height}}">
+                        </a>
+                        <a href="{{this.link}}" class="tech-talks__link_title" target="_blank" rel="noopener">
+                            <h3 class="tech-talks__header">{{this.title}}</h3>
+                        </a>
+                        <div class="tech-talks__published">
+                            {{this.published}}
+                        </div>
+                        <div class="tech-talks__description">
+                            {{#each this.description}}
+                                <p class="tech-talks__paragraph">{{{this}}}</p>
+                            {{/each}}
+                        </div>
+                    </li>
+                {{/each}}
+            </ul>
         </section>
     {{/content}}
 {{/extend}}
