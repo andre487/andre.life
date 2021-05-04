@@ -42,9 +42,13 @@
         {{#block "content"}}{{/block}}
 
         {{#if addMetrika}}
-        <!-- Yandex.Metrika counter -->
-        <img src="https://mc.yandex.ru/watch/32861550" class="one-pixel" alt>
-        <!-- /Yandex.Metrika counter -->
+            <!-- Yandex.Metrika counter -->
+            <script>
+                new Image().src = (
+                        'https://mc.yandex.ru/watch/32861550?page-ref=' + encodeURIComponent(document.referrer || '')
+                );
+            </script>
+            <!-- /Yandex.Metrika counter -->
         {{/if}}
     </body>
 </html>

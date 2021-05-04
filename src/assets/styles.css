@@ -133,8 +133,3 @@ li + li {
 .back-link:hover {
     text-decoration: none;
 }
-
-.one-pixel {
-    position: absolute;
-    left: -9999px;
-}
