@@ -23,6 +23,14 @@ server {
         }
     }
 
+    location /robots.txt {
+        add_header Cache-Control "public, no-cache, no-transform";
+    }
+
+    location /sitemap.xml {
+        add_header Cache-Control "public, no-cache, no-transform";
+    }
+
     location / {
         add_header Cache-Control "public, max-age=3600, must-revalidate, no-transform";
         add_header X-XSS-Protection "1; mode=block";
