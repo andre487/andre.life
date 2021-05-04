@@ -20,7 +20,15 @@
         <meta name="twitter:image" content="{{asset socialPic}}">
         <meta name="twitter:card" content="summary">
 
-        <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' https://mc.yandex.ru https://i.ytimg.com">
+        <meta http-equiv="Content-Security-Policy" content="
+            default-src 'none';
+            style-src 'self';
+            img-src 'self' https://mc.yandex.ru https://i.ytimg.com;
+            script-src https://mc.yandex.ru;
+            connect-src https://mc.yandex.ru;
+            child-src blob: https://mc.yandex.ru;
+            frame-src blob: https://mc.yandex.ru;
+        ">
 
         {{#block "head"}}{{/block}}
     </head>
@@ -43,11 +51,36 @@
 
         {{#if addMetrika}}
             <!-- Yandex.Metrika counter -->
-            <script>
-                new Image().src = (
-                        'https://mc.yandex.ru/watch/32861550?page-ref=' + encodeURIComponent(document.referrer || '')
-                );
+            <script type="text/javascript">
+                (function(d, w, c) {
+                    (w[c] = w[c] || []).push(function() {
+                        try {
+                            w.yaCounter32861550 = new Ya.Metrika({
+                                id: 32861550,
+                                clickmap: true,
+                                trackLinks: true,
+                                accurateTrackBounce: true,
+                                trackHash: true
+                            });
+                        } catch (e) { }
+                    });
+
+                    var n = d.getElementsByTagName("script")[0],
+                            s = d.createElement("script"),
+                            f = function() { n.parentNode.insertBefore(s, n); };
+                    s.type = "text/javascript";
+                    s.async = true;
+                    s.src = "https://mc.yandex.ru/metrika/watch.js";
+
+                    if (w.opera == "[object Opera]") {
+                        d.addEventListener("DOMContentLoaded", f, false);
+                    } else { f(); }
+                })(document, window, "yandex_metrika_callbacks");
             </script>
+            <noscript>
+                <div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" />
+                </div>
+            </noscript>
             <!-- /Yandex.Metrika counter -->
         {{/if}}
     </body>

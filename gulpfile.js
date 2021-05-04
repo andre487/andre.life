@@ -25,7 +25,6 @@ function buildPages() {
             minifyCSS: true,
             minifyJS: true,
             removeComments: true,
-            ignoreCustomComments: [/Yandex\.Metrika counter/],
             removeRedundantAttributes: true,
             removeScriptTypeAttributes: true,
             removeStyleLinkTypeAttributes: true
