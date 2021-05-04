@@ -12,7 +12,11 @@
     {{#content "content"}}
         <section class="document-section">
             <header>
-                <h2 class="document-section__header">Follow&nbsp;me&nbsp;on</h2>
+                <h2 class="document-section__header">
+                    <a id="follow-links" href="#follow-links" class="anchor-link">
+                        Follow&nbsp;me&nbsp;on
+                    </a>
+                </h2>
             </header>
             <ul>
                 {{#each socialNetworks}}
@@ -27,17 +31,24 @@
         </section>
 
         <section class="document-section">
-            <!--suppress HtmlUnknownTarget -->
-            I have a&nbsp;<a href="wish-list.html">wish list</a>
+            <a id="wish-list" href="#wish-list" class="anchor-link">
+                <!--suppress HtmlUnknownTarget -->
+                I have a&nbsp;<a href="wish-list.html">wish list</a>
+            </a>
         </section>
 
         <section class="document-section" lang="ru">
             <header>
-                <h2 class="document-section__header">Пространные рассказы в&nbsp;Твиттере</h2>
+                <h2 class="document-section__header">
+                    <a id="twitter-threads" href="#twitter-threads" class="anchor-link">
+                        Пространные рассказы в&nbsp;Твиттере
+                    </a>
+                </h2>
             </header>
-            <ul>
+            <ul class="twitter-threads">
                 {{#each twitterThreads}}
                     <li>
+                        <span class="twitter-threads__published">{{this.published}}</span>
                         <a href="{{this.link}}" target="_blank" rel="noopener">
                             {{{this.title}}}
                         </a>
@@ -48,7 +59,11 @@
 
         <section class="document-section" lang="ru">
             <header>
-                <h2 class="document-section__header">Технические выступления</h2>
+                <h2 class="document-section__header">
+                    <a id="tech-talks" href="#tech-talks" class="anchor-link">
+                        Технические выступления
+                    </a>
+                </h2>
             </header>
             <ul class="tech-talks">
                 {{#each techTalks}}

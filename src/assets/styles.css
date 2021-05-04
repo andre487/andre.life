@@ -3,14 +3,20 @@
     --color-blue-grey-100: #eceff1;
     --color-blue-grey-300: #90a4ae;
     --color-blue-grey-900: #263238;
+
     --color-grey-100: #fafafa;
+    --color-grey-400: #BDBDBD;
+    --color-grey-700: #616161;
     --color-grey-900: #212121;
+
     --color-blue-200: #bbdefb;
     --color-blue-900: #0d47a1;
+
     --color-purple-200: #ce93d8;
     --color-purple-900: #4a148c;
 
     --page-bg-color: var(--color-grey-100);
+    --anchor-color: var(--color-blue-grey-300);
     --text-color: var(--color-blue-grey-900);
     --link-base-color: var(--color-blue-900);
     --link-hover-color: var(--color-purple-900);
@@ -70,6 +76,11 @@ a:hover, a:active {
     text-decoration: underline;
 }
 
+a:focus {
+    outline: thin dotted;
+    outline-offset: 0.25em;
+}
+
 ul {
     margin: 0;
     padding: 0 0 0 1.6rem;
@@ -83,8 +94,22 @@ li + li {
     margin-top: 0.65rem;
 }
 
+.anchor-link.anchor-link {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+.anchor-link:hover::after {
+    content: '#';
+    display: inline-block;
+    vertical-align: center;
+    padding-left: 0.5em;
+    font-size: 0.8em;
+    color: var(--anchor-color);
+}
+
 .document-section + .document-section {
-    margin-top: 1.5rem;
+    margin-top: 1.75rem;
 }
 
 .document-section__header {
@@ -103,7 +128,10 @@ li + li {
 .back-link-container {
     font-size: 1.33rem;
     margin: 0.2rem 0 0.85rem 0;
-    font-family: 'Arial', sans-serif;
+}
+
+.back-link:hover {
+    text-decoration: none;
 }
 
 .one-pixel {
