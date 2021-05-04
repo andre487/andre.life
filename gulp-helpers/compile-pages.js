@@ -18,8 +18,8 @@ handlebars.registerPartial('layout', fs.readFileSync(LAYOUT_FILE, 'utf8'));
 registerHelpers(handlebars);
 
 const commonData = yaml.load(fs.readFileSync(path.join(DATA_DIR, 'common.yaml')));
-if (process.env.NODE_ENV === 'dev') {
-    commonData.addMetrika = false;
+if (process.env.NODE_ENV === 'prod') {
+    commonData.addMetrika = true;
 }
 
 module.exports = through.obj((file, encoding, callback) => {
