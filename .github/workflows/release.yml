@@ -15,7 +15,7 @@ jobs:
     - name: Install dependencies
       run: npm ci
     - name: Build site
-      run: npm run build
+      run: NODE_ENV=prod npm run build
     - name: Create build.tar.gz
       run: cd build && tar -cvzf ../build.tar.gz . && cd ..
     - uses: actions/upload-artifact@v1
