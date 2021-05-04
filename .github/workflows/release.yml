@@ -14,8 +14,12 @@ jobs:
         node-version: '12'
     - name: Install dependencies
       run: npm ci
+    - name: Set NODE_ENV
+      run: export NODE_ENV=prod
+    - name: Set YOUTUBE_API_KEY
+      run: export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }}
     - name: Build site
-      run: NODE_ENV=prod npm run build
+      run: npm run build
     - name: Create build.tar.gz
       run: cd build && tar -cvzf ../build.tar.gz . && cd ..
     - uses: actions/upload-artifact@v1
