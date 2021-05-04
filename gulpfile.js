@@ -99,7 +99,7 @@ async function buildSitemap() {
         if (rootNames.has(path.basename(filePath))) {
             continue;
         }
-        siteEntries.push(`<url><loc>/${filePath}</loc></url>`);
+        siteEntries.push(`<url><loc>https://andre.life/${filePath}</loc></url>`);
     }
 
     const content = `<?xml version="1.0" encoding="UTF-8"?>
