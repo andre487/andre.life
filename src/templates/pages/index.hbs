@@ -12,11 +12,11 @@
     {{#content "content"}}
         <section class="document-section">
             <header>
-                <h2 class="document-section__header">Follow me on</h2>
+                <h2 class="document-section__header">Follow&nbsp;me&nbsp;on</h2>
             </header>
-            <ul class="social-networks">
+            <ul>
                 {{#each socialNetworks}}
-                    <li class="social-networks__item">
+                    <li>
                         {{this.title}}:
                         <a href="{{this.url}}" target="_blank" rel="noopener">
                             {{this.login}}
@@ -27,9 +27,23 @@
         </section>
 
         <section class="document-section">
-            I have a
             <!--suppress HtmlUnknownTarget -->
-            <a href="wish-list.html">wish list</a>
+            I have a&nbsp;<a href="wish-list.html">wish list</a>
+        </section>
+
+        <section class="document-section" lang="ru">
+            <header>
+                <h2 class="document-section__header">Пространные рассказы в&nbsp;Твиттере</h2>
+            </header>
+            <ul>
+                {{#each twitterThreads}}
+                    <li>
+                        <a href="{{this.link}}" target="_blank" rel="noopener">
+                            {{{this.title}}}
+                        </a>
+                    </li>
+                {{/each}}
+            </ul>
         </section>
 
         <section class="document-section" lang="ru">
