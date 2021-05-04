@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{lang}}">
     <head>
-        <title>
-            {{pageTitle}}
-            {{#if (lookup pageSubtitle page)}}
-                – {{lookup pageSubtitle page}}
-            {{/if}}
-        </title>
+        <title>{{pageTitle}}{{#if pageSubtitle}} – {{pageSubtitle}}{{/if}}</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="{{#block "description"}}{{/block}}">
@@ -16,13 +11,13 @@
         <link rel="shortcut icon" href="{{asset "favicon.png"}}" type="image/png">
 
         <meta property="og:title" content="andre487">
-        <meta property="og:description" content="{{lookup socialText page}}">
-        <meta property="og:image" content="{{asset (lookup socialPic page)}}">
+        <meta property="og:description" content="{{socialText}}">
+        <meta property="og:image" content="{{socialPic}}">
         <meta property="og:url" content="{{urlFor page}}">
 
         <meta name="twitter:title" content="andre487">
-        <meta name="twitter:description" content="{{lookup socialText page}}">
-        <meta name="twitter:image" content="{{asset (lookup socialPic page)}}">
+        <meta name="twitter:description" content="{{socialText}}">
+        <meta name="twitter:image" content="{{socialPic}}">
         <meta name="twitter:card" content="summary_large_image">
 
         <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self'; img-src 'self' https://mc.yandex.ru">
@@ -32,22 +27,24 @@
     <body>
         <header class="summary document-section">
             <h1 class="document-section__header {{#if headerNoMargin}}document-section__header_no-margin{{/if}}">
-                {{ lookup pageHeader page }}
+                {{pageHeader}}
             </h1>
             {{#ifNotEquals page "index"}}
                 <div class="back-link-container">
                     <a href="{{urlFor "index"}}">←</a>
                 </div>
             {{/ifNotEquals}}
-            {{#if (lookup summary page)}}
-                <p class="summary__text">{{{lookup summary page}}}</p>
+            {{#if summary}}
+                <p class="summary__text">{{{summary}}}</p>
             {{/if}}
         </header>
 
         {{#block "content"}}{{/block}}
 
+        {{#if addMetrika}}
         <!-- Yandex.Metrika counter -->
         <img src="https://mc.yandex.ru/watch/32861550" class="one-pixel" alt>
         <!-- /Yandex.Metrika counter -->
+        {{/if}}
     </body>
 </html>

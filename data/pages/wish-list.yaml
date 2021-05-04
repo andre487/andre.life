@@ -1,38 +1,8 @@
-lang: en
-pageTitle: Andrey Prokopyuk
-pageSubtitle:
-  index: ''
-  wishList: Wish list
-pageHeader:
-  index: Andrey Prokopyuk
-  wishList: Wish list
-socialText:
-  index: Social links
-  wishList: Wish list
-socialPic:
-  index: photo.jpg
-  wishList: amazing-horse.png
-summary:
-  index: >-
-    Hello! My name is Andrey. I'm a developer at <a href="https://yandex.com"
-    target="_blank" rel="noopener">Yandex</a>, working on the Yandex Translate
-  wishList: ''
-socialNetworks:
-  - title: Twitter
-    login: Andre_487
-    url: https://twitter.com/Andre_487
-  - title: Instagram
-    login: andre_487
-    url: https://instagram.com/andre_487
-  - title: GitHub
-    login: andre487
-    url: https://github.com/andre487
-  - title: Leprosorium
-    login: Andre_487
-    url: https://leprosorium.ru/users/Andre_487
-  - title: Facebook
-    login: andre487
-    url: https://www.facebook.com/profile.php?id=100001722691597
+lang: ru
+pageSubtitle: Wish list
+socialText: Wish list
+socialPic: amazing-horse.png
+pageHeader: Wish list
 wishList:
   - title: Цветной лазерный принтер
     link: >-

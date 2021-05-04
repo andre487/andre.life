@@ -10,7 +10,7 @@ const registerHelpers = require('./hbs-helpers');
 const fsp = fs.promises;
 
 const PROJECT_DIR = path.resolve(path.join(path.dirname(__filename), '..'));
-const DATA_DIR = path.join(PROJECT_DIR, 'template-data');
+const DATA_DIR = path.join(PROJECT_DIR, 'data');
 const LAYOUT_FILE = path.join(PROJECT_DIR, 'src', 'templates', 'layout', 'main.hbs');
 
 handlebarsLayouts.register(handlebars);
@@ -18,6 +18,9 @@ handlebars.registerPartial('layout', fs.readFileSync(LAYOUT_FILE, 'utf8'));
 registerHelpers(handlebars);
 
 const commonData = yaml.load(fs.readFileSync(path.join(DATA_DIR, 'common.yaml')));
+if (process.env.NODE_ENV === 'dev') {
+    commonData.addMetrika = false;
+}
 
 module.exports = through.obj((file, encoding, callback) => {
     if (file.isNull() || file.isDirectory()) {

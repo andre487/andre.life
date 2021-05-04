@@ -40,22 +40,20 @@ function addCspHashes(html) {
     return root.toString();
 }
 
-module.exports = function() {
-    return through.obj(function(file, encoding, callback) {
-        if (file.isNull() || file.isDirectory()) {
-            return callback(null, file);
-        }
+module.exports = through.obj(function(file, encoding, callback) {
+    if (file.isNull() || file.isDirectory()) {
+        return callback(null, file);
+    }
 
-        if (file.isStream()) {
-            return callback(new Error('Stream is not supported'), file);
-        }
+    if (file.isStream()) {
+        return callback(new Error('Stream is not supported'), file);
+    }
 
-        try {
-            const newHtml = addCspHashes(file.contents.toString());
-            file.contents = Buffer.from(newHtml);
-            callback(null, file);
-        } catch (e) {
-            callback(e);
-        }
-    });
-};
+    try {
+        const newHtml = addCspHashes(file.contents.toString());
+        file.contents = Buffer.from(newHtml);
+        callback(null, file);
+    } catch (e) {
+        callback(e);
+    }
+});

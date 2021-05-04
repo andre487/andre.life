@@ -6,7 +6,7 @@ const glob = util.promisify(require('glob'));
 const PROJECT_DIR = path.resolve(path.join(path.dirname(__filename), '..'));
 const BUILD_DIR = path.join(PROJECT_DIR, 'build');
 
-module.exports = async function() {
+module.exports = async function buildSitemap() {
     const rootFiles = await fsp.readdir(path.join(PROJECT_DIR, 'src', 'root-files'));
     const htmlFiles = await glob(path.join(BUILD_DIR, '**', '*.html'));
 

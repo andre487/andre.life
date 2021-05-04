@@ -53,3 +53,5 @@ node_modules
 # Application
 build
 *.retry
+.DS_Store
+**/*/.DS_Store

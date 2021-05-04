@@ -1,0 +1,22 @@
+pageHeader: Andrey Prokopyuk
+socialText: Social links
+summary: >-
+  Hello! My name is&nbsp;Andrey. I'm a&nbsp;developer
+  at&nbsp;<a href="https://yandex.com" target="_blank" rel="noopener">Yandex</a>,
+  working on&nbsp;the&nbsp;Yandex Translate
+socialNetworks:
+  - title: Twitter
+    login: Andre_487
+    url: https://twitter.com/Andre_487
+  - title: Instagram
+    login: andre_487
+    url: https://instagram.com/andre_487
+  - title: GitHub
+    login: andre487
+    url: https://github.com/andre487
+  - title: Leprosorium
+    login: Andre_487
+    url: https://leprosorium.ru/users/Andre_487
+  - title: Facebook
+    login: andre487
+    url: https://www.facebook.com/profile.php?id=100001722691597

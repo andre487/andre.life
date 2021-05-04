@@ -30,7 +30,7 @@ function buildPages() {
             removeScriptTypeAttributes: true,
             removeStyleLinkTypeAttributes: true
         }),
-        addCspHashes(),
+        addCspHashes,
         gulpHtmlMinify({
             collapseWhitespace: true,
             collapseBooleanAttributes: true,
