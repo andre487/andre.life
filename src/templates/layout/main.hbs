@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{lang}}">
+<html lang="{{lang}}" prefix="og: http://ogp.me/ns#">
     <head>
         <title>{{pageTitle}}{{#if pageSubtitle}} – {{pageSubtitle}}{{/if}}</title>
         <meta charset="utf-8">
@@ -10,14 +10,15 @@
         <link rel="icon" href="{{asset "favicon.png"}}" type="image/png">
 
         <meta property="og:title" content="andre487">
+        <meta property="og:type" content="website">
         <meta property="og:description" content="{{socialText}}">
-        <meta property="og:image" content="https://andre.life/{{asset socialPic}}">
+        <meta property="og:image" content="https://andre.life{{asset socialPic}}">
         <meta property="og:url" content="{{urlFor page}}">
 
         <meta name="twitter:title" content="andre487">
         <meta name="twitter:site" content="@Andre_487">
         <meta name="twitter:description" content="{{socialText}}">
-        <meta name="twitter:image" content="https://andre.life/{{asset socialPic}}">
+        <meta name="twitter:image" content="https://andre.life{{asset socialPic}}">
         <meta name="twitter:card" content="summary">
 
         <meta http-equiv="Content-Security-Policy" content="
