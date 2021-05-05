@@ -56,8 +56,8 @@
     - name: Pass NGINX conf to container
       when: nginx_conf.changed
       local_action: >-
-        ansible.builtin.shell yc compute instance update-container \
-            --name "$MACHINE_NAME" \
+        command yc compute instance update-container \
+            --name "{{ machine_name }}" \
             --container-volume-host-path 'name=site-conf,mount-path=/etc/nginx/conf.d,host-path=/etc/nginx/conf.d,ro=true'
       become: no
       register: container_conf
@@ -65,15 +65,15 @@
     - name: Show NGINX conf to container result
       when: container_conf.changed
       debug:
-        var: container_conf.stdout_lines
+        msg: "{{ container_conf }}"
 
     - name: Restart VM
       when: nginx_conf.changed
-      local_action: command yc compute instance restart --name "$MACHINE_NAME"
+      local_action: command yc compute instance restart --name "{{ machine_name }}"
       become: no
       register: restart_vm
 
     - name: Show Restart VM result
       when: restart_vm.changed
       debug:
-        var: restart_vm.stdout_lines
+        msg: "{{ restart_vm }}"
