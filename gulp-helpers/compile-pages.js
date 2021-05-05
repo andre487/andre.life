@@ -15,6 +15,8 @@ require('moment/locale/ru');
 
 const fsp = fs.promises;
 
+const IS_PROD = process.env.NODE_ENV === 'prod';
+
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/videos';
 let YOUTUBE_API_KEY = null;
 
@@ -49,6 +51,7 @@ async function compilePage(file) {
     const templatePath = path.join(DATA_DIR, 'pages', `${pageName}.yaml`);
     const pageData = yaml.load(await fsp.readFile(templatePath));
     const context = merge({}, commonData, pageData);
+    context.addMetrika = IS_PROD;
 
     if (context.techTalks) {
         context.techTalks = await handleVideoLinkList(context.techTalks);

@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
-const gulpInject = require('gulp-inject-string');
 const gulpCleanCss = require('gulp-clean-css');
 const gulpHtmlMinify = require('gulp-html-minifier');
 const { pipeline } = require('readable-stream');
@@ -9,19 +8,10 @@ const { addCspHashes, compilePages, buildSitemap } = require('./gulp-helpers');
 
 const fsp = fs.promises;
 
-const IS_PROD = process.env.NODE_ENV === 'prod';
-
 const PROJECT_DIR = path.dirname(__filename);
 const SRC_DIR = path.join(PROJECT_DIR, 'src');
 const ASSET_DIR = path.join(PROJECT_DIR, 'src', 'assets');
 const BUILD_DIR = path.join(PROJECT_DIR, 'build');
-
-const METRIKA_FILE = path.join(SRC_DIR, 'templates', 'partials', 'metrika.html');
-
-let metrikaHtml = '';
-if (IS_PROD) {
-    metrikaHtml = fs.readFileSync(METRIKA_FILE, 'utf8');
-}
 
 function removeBuildDir() {
     return fsp.rmdir(BUILD_DIR, { recursive: true });
@@ -49,7 +39,6 @@ function buildPages() {
             sortClassName: true,
             useShortDoctype: true,
         }),
-        gulpInject.append(metrikaHtml),
         gulp.dest(BUILD_DIR)
     );
 }
