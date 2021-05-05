@@ -10,8 +10,7 @@
   "scripts": {
     "dev": "python3 -m http.server 8000 --bind localhost --directory build",
     "build": "gulp",
-    "build-dev": "NODE_ENV=dev gulp",
-    "build-watch": "NODE_ENV=dev gulp watch",
+    "build-watch": "gulp watch",
     "make-deploy": "deploy/yandex_cloud/setup_site.sh"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",
@@ -28,18 +27,19 @@
     "gulp-clean-css": "4.3.0",
     "gulp-cli": "2.3.0",
     "gulp-html-minifier": "0.1.8",
-    "handlebars": "^4.7.7",
+    "gulp-inject-string": "1.1.2",
+    "handlebars": "4.7.7",
     "handlebars-layouts": "3.1.4",
-    "js-yaml": "^4.1.0",
-    "lodash": "^4.17.21",
-    "lodash.template": "^4.5.0",
-    "moment": "^2.29.1",
-    "node-fetch": "^2.6.1",
-    "node-html-parser": "^3.2.0",
-    "readable-stream": "^3.6.0",
+    "js-yaml": "4.1.0",
+    "lodash": "4.17.21",
+    "lodash.template": "4.5.0",
+    "moment": "2.29.1",
+    "node-fetch": "2.6.1",
+    "node-html-parser": "3.2.0",
+    "readable-stream": "3.6.0",
     "through2": "4.0.2",
-    "throw": "^1.1.0",
-    "vinyl": "^2.2.1",
-    "yargs-parser": "^20.2.7"
+    "throw": "1.1.0",
+    "vinyl": "2.2.1",
+    "yargs-parser": "20.2.7"
   }
 }
