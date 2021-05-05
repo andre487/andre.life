@@ -14,7 +14,7 @@ server {
     error_log /dev/stderr info;
 
     gzip on;
-    gzip_min_length 1500;
+    gzip_min_length 1460;
     gzip_vary on;
     gzip_comp_level 6;
     gzip_types text/html text/css text/xml text/plain application/javascript;
