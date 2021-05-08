@@ -21,9 +21,10 @@
         <meta name="twitter:image" content="https://andre.life{{asset socialPic}}">
         <meta name="twitter:card" content="summary">
 
+        <!-- TODO: Get rid of style-src: 'unsafe-inline' -->
         <meta http-equiv="Content-Security-Policy" content="
             default-src 'none';
-            style-src 'self' https://mc.yandex.ru;
+            style-src 'self' 'unsafe-inline' https://mc.yandex.ru;
             img-src 'self' https://mc.yandex.ru https://i.ytimg.com;
             script-src https://mc.yandex.ru https://yastatic.net;
             connect-src https://mc.yandex.ru;
