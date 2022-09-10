@@ -14,7 +14,10 @@ const ASSET_DIR = path.join(PROJECT_DIR, 'src', 'assets');
 const BUILD_DIR = path.join(PROJECT_DIR, 'build');
 
 function removeBuildDir() {
-    return fsp.rmdir(BUILD_DIR, { recursive: true });
+    if (!fs.existsSync(BUILD_DIR)) {
+        return Promise.resolve();
+    }
+    return fsp.rm(BUILD_DIR, { recursive: true });
 }
 
 function buildPages() {
