@@ -4,6 +4,12 @@ socialText: Wish list
 socialPic: amazing-horse.png
 pageHeader: Wish list
 wishList:
+  - title: Сходить в бар
+    link: >-
+      https://www.youtube.com/watch?v=IslF_EyhMzg
+  - title: Яндекс.Станция Макс
+    link: >-
+      https://market.yandex.ru/product--umnaia-kolonka-yandex-stantsiia-maks/761839003?glfilter=14871214%3A15111347_101191895403&glfilter=27421310%3A27421370_101191895403&text=яндекс%20станция%20макс&cpc=gQsJvhhC7qL2CoAI_Q6nf_Kqzfc7XoqjVqs0q-hynkDlpQ3FhGgskESdX-zNLfapBGv04M1CwKprKcXhqdFlu6fC4lQqQOx0Wyf3Yei7xh9mGplgT1Ex1UR5ZGJJkPEF7z_2UmSRQVdTEjQ6ruNLQ2OWlODJhx_FJWLNoHDdDawbofp_wyWgGw%2C%2C&sku=101191895403&do-waremd5=ZPwU49a-k8lCmQnJFsnEnw&resale_goods=resale_new&cpa=1&nid=26992350
   - title: Цветной лазерный принтер
     link: >-
       https://market.yandex.ru/product--mfu-canon-i-sensys-mf744cdw/496794068?lr=213&track=char
@@ -32,5 +38,3 @@ wishList:
     link: https://decanter.ru/madera/dry
   - title: Мадера полусухая
     link: https://decanter.ru/madera/semi-dry
-  - title: Декантер
-    link: https://decanter.ru/decanters
