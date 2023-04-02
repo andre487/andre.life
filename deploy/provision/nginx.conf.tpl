@@ -40,6 +40,7 @@ server {
     location / {
         add_header Cache-Control "public, max-age=3600, must-revalidate, no-transform";
         if ($referer_site_type = "other") {
+            add_header Cache-Control "public, max-age=3600, must-revalidate, no-transform";
             add_header X-Content-Type-Options "nosniff";
             add_header X-XSS-Protection "1; mode=block";
             add_header X-Frame-Options "deny";
