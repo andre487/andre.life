@@ -20,6 +20,6 @@ jobs:
           export YOUTUBE_API_KEY=${{ secrets.YOUTUBE_API_KEY }};
           npm run build
       - name: Publish content to GitHub Pages
-        uses: andre487/publish-to-orphan-gh-pages@v1.2.2
+        uses: andre487/publish-to-orphan-gh-pages@v1.2.3
         with:
           deploy_private_key: ${{ secrets.GH_PAGES_DEPLOY_PRIVATE_KEY }}
