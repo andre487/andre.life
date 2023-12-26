@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-Sitemap: https://andre.life/sitemap.xml
-Host: andre.life
