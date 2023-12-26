@@ -14,6 +14,9 @@ module.exports = async function buildSitemap() {
     const siteEntries = [];
 
     for (const fileAbsPath of htmlFiles) {
+        if (fileAbsPath.endsWith('404.html')) {
+            continue;
+        }
         const filePath = path.relative(BUILD_DIR, fileAbsPath);
         if (rootNames.has(path.basename(filePath))) {
             continue;

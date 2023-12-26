@@ -1,4 +1,6 @@
 User-agent: *
+Disallow: /404
+Disallow: /404.html
 Disallow:
 Sitemap: https://andre.life/sitemap.xml
 Host: andre.life
