@@ -38,6 +38,6 @@
     "readable-stream": "^3.6.2",
     "through2": "^4.0.2",
     "throw": "^1.1.1",
-    "vinyl": "^3.0.0"
+    "vinyl": "^2.2.1"
   }
 }
