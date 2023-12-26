@@ -81,10 +81,3 @@ const build = gulp.series(
 
 gulp.task('build', build);
 gulp.task('default', build);
-
-gulp.task('watch', gulp.series(
-    build,
-    function watchFiles() {
-        gulp.watch(['src/*', 'src/**/*'], build);
-    }
-));
