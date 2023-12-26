@@ -1,6 +1,18 @@
 {{#extend "layout" page="404"}}
+    {{#content "head"}}
+        <link rel="stylesheet" href="{{asset "404.css"}}">
+    {{/content}}
+
     {{#content "content"}}
-        <p>This page doesn't exist</p>
-        <p>Try <a href="/">Home Page</a></p>
+        <div class="p404">
+            <div class="p404__text">
+                <h1 class="p404__header">Page 404</h1>
+                <p>This page doesn't exist</p>
+                <p>Try <a href="/">Home Page</a></p>
+            </div>
+            <div class="p404__img">
+                <p><img src="{{asset "404.jpg"}}" alt="Page not found" width="300"></p>
+            </div>
+        </div>
     {{/content}}
 {{/extend}}

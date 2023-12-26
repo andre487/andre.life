@@ -10,7 +10,7 @@
   "scripts": {
     "dev": "python3 -m http.server 8000 --bind localhost --directory build",
     "build": "gulp",
-    "build-watch": "gulp watch",
+    "build-watch": "nodemon --watch src --watch data --watch gulp-helpers --watch gulpfile.js --ext '*' --exec npm run build",
     "make-deploy": "deploy/yandex_cloud/setup_site.sh"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",
@@ -36,6 +36,7 @@
     "moment": "2.29.1",
     "node-fetch": "2.6.1",
     "node-html-parser": "3.2.0",
+    "nodemon": "^3.0.2",
     "readable-stream": "3.6.0",
     "through2": "4.0.2",
     "throw": "1.1.0",
