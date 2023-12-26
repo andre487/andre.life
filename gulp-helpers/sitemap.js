@@ -1,7 +1,6 @@
 const fsp = require('fs').promises;
 const path = require('path');
-const util = require('util');
-const glob = util.promisify(require('glob'));
+const { glob } = require('glob');
 
 const PROJECT_DIR = path.resolve(path.join(path.dirname(__filename), '..'));
 const BUILD_DIR = path.join(PROJECT_DIR, 'build');

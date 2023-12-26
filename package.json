@@ -8,10 +8,9 @@
     "url": "https://github.com/andre487/andre.life.git"
   },
   "scripts": {
-    "dev": "python3 -m http.server 8000 --bind localhost --directory build",
+    "dev": "http-server ./build -a localhost --port 0 -c-1",
     "build": "gulp",
-    "build-watch": "nodemon --watch src --watch data --watch gulp-helpers --watch gulpfile.js --ext '*' --exec npm run build",
-    "make-deploy": "deploy/yandex_cloud/setup_site.sh"
+    "build:watch": "nodemon --watch src --watch data --watch gulp-helpers --watch gulpfile.js --ext '*' --exec npm run build"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",
   "license": "MIT",
@@ -22,25 +21,23 @@
   "devDependencies": {
     "csp-hash-generator": "0.0.3",
     "csp-parse": "0.0.2",
-    "glob": "7.1.6",
+    "glob": "^10.3.10",
     "gulp": "4.0.2",
     "gulp-clean-css": "4.3.0",
     "gulp-cli": "2.3.0",
     "gulp-html-minifier": "0.1.8",
-    "gulp-inject-string": "1.1.2",
     "handlebars": "4.7.7",
     "handlebars-layouts": "3.1.4",
-    "js-yaml": "4.1.0",
-    "lodash": "4.17.21",
-    "lodash.template": "4.5.0",
-    "moment": "2.29.1",
-    "node-fetch": "2.6.1",
-    "node-html-parser": "3.2.0",
+    "http-server": "^14.1.1",
+    "js-yaml": "^4.1.0",
+    "lodash": "^4.17.21",
+    "moment": "^2.30.0",
+    "node-fetch": "^2.7.0",
+    "node-html-parser": "^6.1.12",
     "nodemon": "^3.0.2",
-    "readable-stream": "3.6.0",
-    "through2": "4.0.2",
-    "throw": "1.1.0",
-    "vinyl": "2.2.1",
-    "yargs-parser": "20.2.7"
+    "readable-stream": "^3.6.2",
+    "through2": "^4.0.2",
+    "throw": "^1.1.1",
+    "vinyl": "^3.0.0"
   }
 }
