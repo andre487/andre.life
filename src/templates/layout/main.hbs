@@ -48,6 +48,8 @@
         <script>
             (function(self, top, document) {
                 try {
+                    console.dir('self', self);
+                    console.dir('top', top);
                     if (self === top || top.document.location.host.endsWith('yandex.ru')) {
                         var antiClickJack = document.getElementById('anti-click-jack');
                         return antiClickJack.parentNode.removeChild(antiClickJack);
