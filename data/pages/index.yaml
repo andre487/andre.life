@@ -6,6 +6,9 @@ socialNetworks:
   - title: GitHub
     login: andre487
     url: https://github.com/andre487
+  - title: Twitter
+    login: Andre_487
+    url: https://twitter.com/Andre_487
   - title: Leprosorium
     login: Andre_487
     url: https://leprosorium.ru/users/Andre_487
@@ -29,16 +32,16 @@ techTalks:
     autoSnippet: true
     description:
       - Круглый стол Avito по&nbsp;скорости фронтенда с&nbsp;моим участием
-twitterThreads: []
-#  - link: https://twitter.com/Andre_487/status/1391841212601077764
-#    published: 10.05.2021
-#    title: Про&nbsp;внешний периметр в&nbsp;архитектуре веб-страниц
-#  - link: https://twitter.com/Andre_487/status/1378448835656220680
-#    published: 03.04.2021
-#    title: Об&nbsp;опыте руководства
-#  - link: https://twitter.com/Andre_487/status/1377579565711818756
-#    published: 01.04.2021
-#    title: Об&nbsp;эксперименте с&nbsp;Service&nbsp;Worker на&nbsp;Поиске&nbsp;Яндекса
-#  - link: https://twitter.com/Andre_487/status/1366027297904594945
-#    published: 28.02.2021
-#    title: О&nbsp;том, как&nbsp;покинул пост руководителя команды скорости
+twitterThreads:
+  - link: https://twitter.com/Andre_487/status/1391841212601077764
+    published: 10.05.2021
+    title: Про&nbsp;внешний периметр в&nbsp;архитектуре веб-страниц
+  - link: https://twitter.com/Andre_487/status/1378448835656220680
+    published: 03.04.2021
+    title: Об&nbsp;опыте руководства
+  - link: https://twitter.com/Andre_487/status/1377579565711818756
+    published: 01.04.2021
+    title: Об&nbsp;эксперименте с&nbsp;Service&nbsp;Worker на&nbsp;Поиске&nbsp;Яндекса
+  - link: https://twitter.com/Andre_487/status/1366027297904594945
+    published: 28.02.2021
+    title: О&nbsp;том, как&nbsp;покинул пост руководителя команды скорости
