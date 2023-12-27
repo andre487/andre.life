@@ -38,28 +38,69 @@
             frame-src blob: https://mc.yandex.ru;
         ">
 
+        <style id="anti-click-jack">
+            .b-page {
+                display: none !important;
+            }
+        </style>
+
+        <!--suppress JSCheckFunctionSignatures -->
+        <script>
+            (function(self, top, document) {
+                try {
+                    if (self === top || top.document.location.host.endsWith('yandex.ru')) {
+                        var antiClickJack = document.getElementById('anti-click-jack');
+                        return antiClickJack.parentNode.removeChild(antiClickJack);
+                    }
+                } catch (e) {
+                    console.error(e);
+                }
+
+                document.addEventListener('DOMContentLoaded', function() {
+                    var container = document.createElement('div');
+                    container.className = 'frame-denied';
+                    // noinspection HtmlUnknownTarget
+                    container.innerHTML = [
+                        '<h1>Frame denied</h1>',
+                        '<p><button id=goto-top-frame>Open site without frame</button>',
+                        '<p><img alt=Restricted src=/assets/restricted.jpg width=300>'
+                    ].join('');
+                    document.body.appendChild(container);
+
+                    var button = document.getElementById('goto-top-frame');
+                    if (button) {
+                        button.onclick = function() {
+                            top.location = self.location;
+                        };
+                    }
+                });
+            })(self, top, document);
+        </script>
+
         {{#block "head"}}{{/block}}
     </head>
     <body>
-        <header class="summary document-section">
-            <h1 class="document-section__header {{#if headerNoMargin}}document-section__header_no-margin{{/if}}">
-                {{pageHeader}}
-            </h1>
-            {{#ifNotEquals page "index"}}
-                <div class="back-link-container">
-                    <a class="back-link" href="{{urlFor "index"}}">←</a>
-                </div>
-            {{/ifNotEquals}}
-            {{#if summary}}
-                <p class="summary__text">{{{summary}}}</p>
+        <div class="b-page">
+            <header class="summary document-section">
+                <h1 class="document-section__header {{#if headerNoMargin}}document-section__header_no-margin{{/if}}">
+                    {{pageHeader}}
+                </h1>
+                {{#ifNotEquals page "index"}}
+                    <div class="back-link-container">
+                        <a class="back-link" href="{{urlFor "index"}}">←</a>
+                    </div>
+                {{/ifNotEquals}}
+                {{#if summary}}
+                    <p class="summary__text">{{{summary}}}</p>
+                {{/if}}
+            </header>
+
+            {{#block "content"}}{{/block}}
+
+            {{#if addMetrika}}
+                <!-- Yandex.Metrika counter --> <!--suppress CommaExpressionJS -->
+                <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(32861550, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
             {{/if}}
-        </header>
-
-        {{#block "content"}}{{/block}}
-
-        {{#if addMetrika}}
-            <!-- Yandex.Metrika counter --> <!--suppress CommaExpressionJS -->
-            <script type="text/javascript" > (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)}; m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}) (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym"); ym(32861550, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true, trackHash:true }); </script> <noscript><div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
-        {{/if}}
+        </div>
     </body>
 </html>

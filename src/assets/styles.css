@@ -135,3 +135,7 @@ li + li {
 .back-link:hover {
     text-decoration: none;
 }
+
+.frame-denied {
+    text-align: center;
+}
