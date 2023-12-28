@@ -3,7 +3,7 @@ const fsp = fs.promises;
 const path = require('path');
 const thr = require('throw');
 const yaml = require('js-yaml');
-const merge = require('lodash/merge');
+const merge = require('object-assign-deep');
 const { DATA_DIR, IS_PROD, YT_DATA_DIR } = require('./consts');
 
 const commonData = yaml.load(fs.readFileSync(path.join(DATA_DIR, 'common.yaml')));
