@@ -25,7 +25,7 @@ function addCspHashes(html) {
     const metaCsp = root.querySelector('meta[http-equiv="Content-Security-Policy"]');
     const policy = new CspPolicy(metaCsp.getAttribute('content'));
     if (wasInlineStyle) {
-        policy.add('style-src', "'unsafe-hashes'");
+        policy.add('style-src', '\'unsafe-hashes\'');
     }
 
     for (const hash of styleHashes) {

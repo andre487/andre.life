@@ -12,6 +12,7 @@
     "deps": "npm i --no-audit && npm run audit",
     "deps:ci": "npm ci --no-audit && npm run audit",
     "dev": "http-server ./build -a localhost --port 0 -c-1",
+    "lint": "eslint .",
     "build": "gulp",
     "build:watch": "nodemon --watch src --watch data --watch gulp-helpers --watch gulpfile.js --ext '*' --exec npm run build"
   },
@@ -24,6 +25,7 @@
   "devDependencies": {
     "csp-hash-generator": "^0.0.3",
     "csp-parse": "^0.0.2",
+    "eslint": "^8.56.0",
     "glob": "^10.3.10",
     "gulp": "^4.0.2",
     "gulp-cleaner-css": "^4.3.0",

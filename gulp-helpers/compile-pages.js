@@ -4,7 +4,7 @@ const handlebarsLayouts = require('handlebars-layouts');
 const through = require('through2');
 const Vinyl = require('vinyl');
 const registerHelpers = require('./hbs-helpers');
-const { LAYOUT_FILE } = require('./consts')
+const { LAYOUT_FILE } = require('./consts');
 const { getPageContext } = require('./common');
 
 handlebarsLayouts.register(handlebars);

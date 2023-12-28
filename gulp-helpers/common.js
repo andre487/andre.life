@@ -14,7 +14,7 @@ const getYtVideoId = exports.getYtVideoId = function getYtVideoId(url) {
         return urlData.pathname.slice(1);
     }
     return urlData.searchParams.get('watch') || thr(`Unsupported YouTube URL: ${url}`);
-}
+};
 
 exports.getPageContext = async function getPageContext(file) {
     const baseName = file.basename;
@@ -29,7 +29,7 @@ exports.getPageContext = async function getPageContext(file) {
         context.techTalks = await handleVideoLinkList(context.techTalks);
     }
     return { pageName, context };
-}
+};
 
 async function handleVideoLinkList(linkList) {
     return Promise.all(
