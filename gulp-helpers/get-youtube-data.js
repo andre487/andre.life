@@ -1,12 +1,14 @@
+const fs = require('fs');
+const path = require('path');
 const thr = require('throw');
 const fetch = require('node-fetch');
 const moment = require('moment/moment');
+require('moment/locale/ru');
 const through = require('through2');
-const path = require('path');
 const yaml = require('js-yaml');
-const fs = require('fs');
-const { DATA_DIR, YOUTUBE_API_URL, YT_DATA_DIR } = require('./consts');
 const Vinyl = require('vinyl');
+const { DATA_DIR, YOUTUBE_API_URL, YT_DATA_DIR } = require('./consts');
+const { getYtVideoId } = require('./common');
 
 const fsp = fs.promises;
 
@@ -71,21 +73,15 @@ async function getVideosSnippetsData(linkList) {
 let youTubeApiKey = null;
 
 async function getAutoSnippetData(item) {
-    const urlData = new URL(item.link);
-    if (urlData.host !== 'youtu.be') {
-        throw new Error(`Only youtu.be is supported, not ${urlData.host}`);
-    }
-
-    if (!youTubeApiKey) {
-        youTubeApiKey = process.env.YOUTUBE_API_KEY || thr('You should provide YOUTUBE_API_KEY');
-    }
-
-    const videoId = urlData.pathname.slice(1);
-
+    const videoId = getYtVideoId(item.link);
     const destDataFile = path.join(YT_DATA_DIR, `${videoId}.yaml`);
     if (fs.existsSync(destDataFile)) {
         console.log('We already have data about video', videoId);
         return null;
+    }
+
+    if (!youTubeApiKey) {
+        youTubeApiKey = process.env.YOUTUBE_API_KEY || thr('You should provide YOUTUBE_API_KEY');
     }
 
     const reqUrl = new URL(YOUTUBE_API_URL);

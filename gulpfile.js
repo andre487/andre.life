@@ -1,4 +1,5 @@
 const fs = require('fs');
+const fsp = fs.promises;
 const path = require('path');
 const gulp = require('gulp');
 const gulpCleanCss = require('gulp-cleaner-css');
@@ -17,8 +18,6 @@ const {
     YT_DATA_DIR, ASSET_DIR,
 } = require('./gulp-helpers/consts');
 
-const fsp = fs.promises;
-
 const pagesPaths = path.join(SRC_DIR, 'templates', 'pages', '*.hbs');
 
 function removeBuildDir() {
@@ -28,7 +27,7 @@ function removeBuildDir() {
     return fsp.rm(BUILD_DIR, { recursive: true });
 }
 
-function doGetYouTubeData() {
+function fetchYouTubeData() {
     return pipeline(
         gulp.src(pagesPaths),
         getYouTubeData,
@@ -58,7 +57,7 @@ function buildPages() {
             sortClassName: true,
             useShortDoctype: true,
         }),
-        gulp.dest(BUILD_DIR)
+        gulp.dest(BUILD_DIR),
     );
 }
 
@@ -66,21 +65,26 @@ async function buildCss() {
     return pipeline(
         gulp.src(path.join(ASSET_DIR, '**', '*.css')),
         gulpCleanCss(),
-        gulp.dest(path.join(BUILD_DIR, 'assets'))
+        gulp.dest(path.join(BUILD_DIR, 'assets')),
     );
 }
 
 async function copyImages() {
     return pipeline(
-        gulp.src([path.join(ASSET_DIR, '*.png'), path.join(ASSET_DIR, '*.jpg')]),
-        gulp.dest(path.join(BUILD_DIR, 'assets'))
+        gulp.src([
+            path.join(ASSET_DIR, '*.png'),
+            path.join(ASSET_DIR, '*.jpg'),
+            path.join(YT_DATA_DIR, '*.png'),
+            path.join(YT_DATA_DIR, '*.jpg'),
+        ]),
+        gulp.dest(path.join(BUILD_DIR, 'assets')),
     );
 }
 
 function copyRootFiles() {
     return pipeline(
         gulp.src(path.join(PROJECT_DIR, 'src', 'root-files', '*')),
-        gulp.dest(BUILD_DIR)
+        gulp.dest(BUILD_DIR),
     );
 }
 
@@ -95,6 +99,9 @@ const build = gulp.series(
     buildSitemap
 );
 
-gulp.task('yt-data', doGetYouTubeData);
+gulp.task('fetch-yt-data', fetchYouTubeData);
 gulp.task('build', build);
-gulp.task('default', build);
+gulp.task('default', gulp.series(
+    fetchYouTubeData,
+    build,
+));
