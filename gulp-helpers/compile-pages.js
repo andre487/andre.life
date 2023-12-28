@@ -11,18 +11,17 @@ const thr = require('throw');
 const Vinyl = require('vinyl');
 const yaml = require('js-yaml');
 const registerHelpers = require('./hbs-helpers');
+const {
+    IS_PROD,
+    DATA_DIR,
+    LAYOUT_FILE,
+} = require('./consts')
 require('moment/locale/ru');
 
 const fsp = fs.promises;
 
-const IS_PROD = process.env.NODE_ENV === 'prod';
-
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/videos';
 let YOUTUBE_API_KEY = null;
-
-const PROJECT_DIR = path.resolve(path.join(path.dirname(__filename), '..'));
-const DATA_DIR = path.join(PROJECT_DIR, 'data');
-const LAYOUT_FILE = path.join(PROJECT_DIR, 'src', 'templates', 'layout', 'main.hbs');
 
 handlebarsLayouts.register(handlebars);
 handlebars.registerPartial('layout', fs.readFileSync(LAYOUT_FILE, 'utf8'));

@@ -4,14 +4,22 @@ const gulp = require('gulp');
 const gulpCleanCss = require('gulp-cleaner-css');
 const gulpHtmlMinify = require('gulp-htmlmin');
 const { pipeline } = require('readable-stream');
-const { addCspHashes, compilePages, buildSitemap } = require('./gulp-helpers');
+const {
+    addCspHashes,
+    compilePages,
+    buildSitemap,
+    getYouTubeData,
+} = require('./gulp-helpers');
+const {
+    SRC_DIR,
+    BUILD_DIR,
+    PROJECT_DIR,
+    YT_DATA_DIR, ASSET_DIR,
+} = require('./gulp-helpers/consts');
 
 const fsp = fs.promises;
 
-const PROJECT_DIR = path.dirname(__filename);
-const SRC_DIR = path.join(PROJECT_DIR, 'src');
-const ASSET_DIR = path.join(PROJECT_DIR, 'src', 'assets');
-const BUILD_DIR = path.join(PROJECT_DIR, 'build');
+const pagesPaths = path.join(SRC_DIR, 'templates', 'pages', '*.hbs');
 
 function removeBuildDir() {
     if (!fs.existsSync(BUILD_DIR)) {
@@ -20,9 +28,17 @@ function removeBuildDir() {
     return fsp.rm(BUILD_DIR, { recursive: true });
 }
 
+function doGetYouTubeData() {
+    return pipeline(
+        gulp.src(pagesPaths),
+        getYouTubeData,
+        gulp.dest(YT_DATA_DIR),
+    );
+}
+
 function buildPages() {
     return pipeline(
-        gulp.src(path.join(SRC_DIR, 'templates', 'pages', '*.hbs')),
+        gulp.src(pagesPaths),
         compilePages,
         gulpHtmlMinify({
             minifyCSS: true,
@@ -79,5 +95,6 @@ const build = gulp.series(
     buildSitemap
 );
 
+gulp.task('yt-data', doGetYouTubeData);
 gulp.task('build', build);
 gulp.task('default', build);
