@@ -1,7 +1,7 @@
-const { readFileSync } = require('fs');
+const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
-const { BUILD_DIR } = require('./consts');
+const { BUILD_DIR, SRC_DIR, YT_DATA_DIR } = require('./consts');
 
 const BASE_URL_PATH = process.env['BASE_URL_PATH'] || '/';
 
@@ -19,8 +19,19 @@ module.exports = function(handlebars) {
     handlebars.registerHelper('asset', function(file) {
         let version = assetCache[file];
         if (!version) {
+            let filePath = path.join(BUILD_DIR, 'assets', file);
+            if (!fs.existsSync(filePath)) {
+                filePath = path.join(SRC_DIR, 'assets', file);
+            }
+            if (!fs.existsSync(filePath)) {
+                filePath = path.join(YT_DATA_DIR, file);
+            }
+            if (!fs.existsSync(filePath)) {
+                throw new Error(`There is no file ${file}`);
+            }
+
             const hash = crypto.createHash('md5');
-            hash.update(readFileSync(path.join(BUILD_DIR, 'assets', file)));
+            hash.update(fs.readFileSync(filePath));
 
             const digest = hash.digest();
             const num = digest.readBigUInt64BE() + digest.readBigUInt64BE(8);
