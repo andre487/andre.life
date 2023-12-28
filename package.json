@@ -13,8 +13,10 @@
     "deps:ci": "npm ci --no-audit && npm run audit",
     "dev": "http-server ./build -a localhost --port 0 -c-1",
     "lint": "eslint .",
+    "test": "npm run lint",
     "build": "gulp",
-    "build:watch": "nodemon --watch src --watch data --watch gulp-helpers --watch gulpfile.js --ext '*' --exec npm run build"
+    "build:watch": "nodemon --watch src --watch data --watch gulp-helpers --watch gulpfile.js --ext '*' --exec npm run build",
+    "prepare": "husky install"
   },
   "author": "Andrey Prokopyuk <andrey.prokopyuk@gmail.com> (https://andre.life)",
   "license": "MIT",
@@ -34,6 +36,7 @@
     "handlebars": "^4.7.8",
     "handlebars-layouts": "^3.1.4",
     "http-server": "^14.1.1",
+    "husky": "^8.0.3",
     "js-yaml": "^4.1.0",
     "moment": "^2.30.0",
     "node-fetch": "^2.7.0",
