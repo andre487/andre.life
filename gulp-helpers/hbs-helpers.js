@@ -1,11 +1,9 @@
 const { readFileSync } = require('fs');
 const crypto = require('crypto');
 const path = require('path');
+const { BUILD_DIR } = require('./consts');
 
 const BASE_URL_PATH = process.env['BASE_URL_PATH'] || '/';
-
-const PROJECT_DIR = path.join(path.dirname(__filename), '..');
-const SRC_DIR = path.join(PROJECT_DIR, 'src');
 
 module.exports = function(handlebars) {
     const assetCache = {};
@@ -22,7 +20,7 @@ module.exports = function(handlebars) {
         let version = assetCache[file];
         if (!version) {
             const hash = crypto.createHash('md5');
-            hash.update(readFileSync(path.join(SRC_DIR, 'assets', file)));
+            hash.update(readFileSync(path.join(BUILD_DIR, 'assets', file)));
 
             const digest = hash.digest();
             const num = digest.readBigUInt64BE() + digest.readBigUInt64BE(8);

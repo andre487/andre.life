@@ -43,14 +43,14 @@ async function getYouTubeDataFiles(file) {
     const videosSnippetsData = await getVideosSnippetsData(pageData.techTalks);
     const result = [];
     for (const snippetData of videosSnippetsData) {
-        const { videoId, picExt } = snippetData;
+        const { videoId, picBaseName } = snippetData;
         result.push(
             new Vinyl({
                 path: `${videoId}.yaml`,
                 contents: Buffer.from(yaml.dump(snippetData)),
             }),
             new Vinyl({
-                path: `${videoId}${picExt}`,
+                path: picBaseName,
                 contents: await downloadPic(snippetData.pic.url),
             })
         );
@@ -100,14 +100,15 @@ async function getAutoSnippetData(item) {
 
     const pic = snippetData.thumbnails.medium;
     const picExt = path.extname(pic.url);
+    const picBaseName = `${videoId}${picExt}`;
 
     return {
         url: item.link,
         videoId,
         title: snippetData.title,
         pic,
-        picExt,
-        published: moment(snippetData.publishedAt).calendar()
+        picBaseName,
+        published: moment(snippetData.publishedAt).calendar(),
     };
 }
 

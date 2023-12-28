@@ -67,7 +67,7 @@
                 {{#each techTalks}}
                     <li class="tech-talks__item">
                         <a href="{{this.link}}" class="tech-talks__link_pic" target="_blank" rel="noopener">
-                            <img src="{{this.pic.url}}" alt='Картинка для доклада "{{this.title}}"' width="{{this.pic.width}}" height="{{this.pic.height}}">
+                            <img src="{{asset this.picBaseName}}" alt='Картинка для доклада "{{this.title}}"' width="{{this.pic.width}}" height="{{this.pic.height}}">
                         </a>
                         <a href="{{this.link}}" class="tech-talks__link_title" target="_blank" rel="noopener">
                             <h3 class="tech-talks__header">{{this.title}}</h3>

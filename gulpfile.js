@@ -91,11 +91,11 @@ function copyRootFiles() {
 const build = gulp.series(
     removeBuildDir,
     gulp.parallel(
-        buildPages,
         buildCss,
         copyImages,
         copyRootFiles
     ),
+    buildPages,
     buildSitemap
 );
 
