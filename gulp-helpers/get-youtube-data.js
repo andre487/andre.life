@@ -7,8 +7,8 @@ require('moment/locale/ru');
 const through = require('through2');
 const yaml = require('js-yaml');
 const Vinyl = require('vinyl');
-const { DATA_DIR, YOUTUBE_API_URL, YT_DATA_DIR } = require('./consts');
-const { getYtVideoId } = require('./common');
+const {DATA_DIR, YOUTUBE_API_URL, YT_DATA_DIR} = require('./consts');
+const {getYtVideoId} = require('./common');
 
 const fsp = fs.promises;
 
@@ -23,11 +23,11 @@ module.exports = through.obj(function(file, encoding, callback) {
 
     const stream = this;
     getYouTubeDataFiles(file)
-        .then(result => {
-            result.forEach(vinylFile => stream.push(vinylFile));
+        .then((result) => {
+            result.forEach((vinylFile) => stream.push(vinylFile));
             callback();
         })
-        .catch(e => callback(e));
+        .catch((e) => callback(e));
 });
 
 async function getYouTubeDataFiles(file) {
@@ -43,7 +43,7 @@ async function getYouTubeDataFiles(file) {
     const videosSnippetsData = await getVideosSnippetsData(pageData.techTalks);
     const result = [];
     for (const snippetData of videosSnippetsData) {
-        const { videoId, picBaseName } = snippetData;
+        const {videoId, picBaseName} = snippetData;
         result.push(
             new Vinyl({
                 path: `${videoId}.yaml`,
@@ -52,7 +52,7 @@ async function getYouTubeDataFiles(file) {
             new Vinyl({
                 path: picBaseName,
                 contents: await downloadPic(snippetData.pic.url),
-            })
+            }),
         );
     }
 
@@ -61,13 +61,13 @@ async function getYouTubeDataFiles(file) {
 
 async function getVideosSnippetsData(linkList) {
     return Promise
-        .all(linkList.map(item => {
+        .all(linkList.map((item) => {
             if (item.autoSnippet) {
                 return getAutoSnippetData(item);
             }
             return null;
         }))
-        .then(res => res.filter(Boolean));
+        .then((res) => res.filter(Boolean));
 }
 
 let youTubeApiKey = null;

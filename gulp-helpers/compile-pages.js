@@ -4,8 +4,8 @@ const handlebarsLayouts = require('handlebars-layouts');
 const through = require('through2');
 const Vinyl = require('vinyl');
 const registerHelpers = require('./hbs-helpers');
-const { LAYOUT_FILE } = require('./consts');
-const { getPageContext } = require('./common');
+const {LAYOUT_FILE} = require('./consts');
+const {getPageContext} = require('./common');
 
 handlebarsLayouts.register(handlebars);
 handlebars.registerPartial('layout', fs.readFileSync(LAYOUT_FILE, 'utf8'));
@@ -21,12 +21,12 @@ module.exports = through.obj((file, encoding, callback) => {
     }
 
     compilePage(file)
-        .then(result => callback(null, result))
-        .catch(e => callback(e));
+        .then((result) => callback(null, result))
+        .catch((e) => callback(e));
 });
 
 async function compilePage(file) {
-    const { pageName, context } = await getPageContext(file);
+    const {pageName, context} = await getPageContext(file);
 
     const pageHtml = handlebars.compile(file.contents.toString())(context);
 

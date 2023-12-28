@@ -4,7 +4,7 @@ const path = require('path');
 const thr = require('throw');
 const yaml = require('js-yaml');
 const merge = require('object-assign-deep');
-const { DATA_DIR, IS_PROD, YT_DATA_DIR } = require('./consts');
+const {DATA_DIR, IS_PROD, YT_DATA_DIR} = require('./consts');
 
 const commonData = yaml.load(fs.readFileSync(path.join(DATA_DIR, 'common.yaml')));
 
@@ -28,17 +28,17 @@ exports.getPageContext = async function getPageContext(file) {
     if (context.techTalks) {
         context.techTalks = await handleVideoLinkList(context.techTalks);
     }
-    return { pageName, context };
+    return {pageName, context};
 };
 
 async function handleVideoLinkList(linkList) {
     return Promise.all(
-        linkList.map(item => {
+        linkList.map((item) => {
             if (item.autoSnippet) {
                 return getAutoSnippetData(item);
             }
             return item;
-        })
+        }),
     );
 }
 
@@ -46,7 +46,7 @@ async function getAutoSnippetData(item) {
     const videoId = getYtVideoId(item.link);
     const dataFilePath = path.join(YT_DATA_DIR, `${videoId}.yaml`);
     if (!fs.existsSync(dataFilePath)) {
-        return { ...item };
+        return {...item};
     }
 
     const data = yaml.load(await fsp.readFile(dataFilePath));

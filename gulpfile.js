@@ -4,7 +4,7 @@ const path = require('path');
 const gulp = require('gulp');
 const gulpCleanCss = require('gulp-cleaner-css');
 const gulpHtmlMinify = require('gulp-htmlmin');
-const { pipeline } = require('readable-stream');
+const {pipeline} = require('readable-stream');
 const {
     addCspHashes,
     compilePages,
@@ -24,7 +24,7 @@ function removeBuildDir() {
     if (!fs.existsSync(BUILD_DIR)) {
         return Promise.resolve();
     }
-    return fsp.rm(BUILD_DIR, { recursive: true });
+    return fsp.rm(BUILD_DIR, {recursive: true});
 }
 
 function fetchYouTubeData() {
@@ -45,7 +45,7 @@ function buildPages() {
             removeComments: true,
             removeRedundantAttributes: true,
             removeScriptTypeAttributes: true,
-            removeStyleLinkTypeAttributes: true
+            removeStyleLinkTypeAttributes: true,
         }),
         addCspHashes,
         gulpHtmlMinify({
@@ -93,10 +93,10 @@ const build = gulp.series(
     gulp.parallel(
         buildCss,
         copyImages,
-        copyRootFiles
+        copyRootFiles,
     ),
     buildPages,
-    buildSitemap
+    buildSitemap,
 );
 
 gulp.task('fetch-yt-data', fetchYouTubeData);

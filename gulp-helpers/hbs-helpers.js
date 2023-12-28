@@ -1,7 +1,7 @@
 const fs = require('fs');
 const crypto = require('crypto');
 const path = require('path');
-const { BUILD_DIR, SRC_DIR, YT_DATA_DIR } = require('./consts');
+const {BUILD_DIR, SRC_DIR, YT_DATA_DIR} = require('./consts');
 
 const BASE_URL_PATH = process.env['BASE_URL_PATH'] || '/';
 
