@@ -54,19 +54,26 @@
 
                 document.addEventListener('DOMContentLoaded', function() {
                     var container = document.createElement('div');
-                    container.className = 'frame-denied';
+                    var className = container.className = 'frame-denied';
                     // noinspection HtmlUnknownTarget
                     container.innerHTML = [
                         '<h1>Frame denied</h1>',
-                        '<p><button id=goto-top-frame>Open site without frame</button>',
-                        '<p><img alt=Restricted src=/assets/restricted.jpg width=300>'
+                        "<p>This page has been loaded in a frame now. It's dangerous and restricted.",
+                        '<p><button id=goto-top-frame>Open page without frame</button>',
+                        '<p><img alt=Restricted src=/assets/restricted.jpg width=300 height=300>',
                     ].join('');
                     document.body.appendChild(container);
 
                     var button = document.getElementById('goto-top-frame');
                     if (button) {
                         button.onclick = function() {
-                            top.location = self.location;
+                            try {
+                                var url = new URL(self.location.href);
+                                url.searchParams.set('utm_source', className);
+                                top.location = url.toString();
+                            } catch (e) {
+                                top.location = self.location;
+                            }
                         };
                     }
                 });
@@ -97,20 +104,28 @@
                 <!--suppress JSUnresolvedReference, CommaExpressionJS, JSValidateTypes -->
                 <!-- Yandex.Metrika counter -->
                 <script type="text/javascript">
-                    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-                        m[i].l=1*new Date();
-                        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-                        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-                    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+                    (function(m, e, t, r, i, k, a) {
+                        m[i] = m[i] || function() {(m[i].a = m[i].a || []).push(arguments);};
+                        m[i].l = 1 * new Date();
+                        for (var j = 0; j < document.scripts.length; j++) {
+                            if (document.scripts[j].src === r) { return; }
+                        }
+                        k = e.createElement(t), a = e.getElementsByTagName(
+                                t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a);
+                    })
+                    (window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js', 'ym');
 
-                    ym(32861550, "init", {
-                        clickmap:false,
-                        trackLinks:true,
-                        accurateTrackBounce:true,
-                        trackHash:true
+                    ym(32861550, 'init', {
+                        clickmap: false,
+                        trackLinks: true,
+                        accurateTrackBounce: true,
+                        trackHash: true,
                     });
                 </script>
-                <noscript><div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+                <noscript>
+                    <div><img src="https://mc.yandex.ru/watch/32861550" style="position:absolute; left:-9999px;"
+                              alt="" /></div>
+                </noscript>
                 <!-- /Yandex.Metrika counter -->
             {{/if}}
         </div>
