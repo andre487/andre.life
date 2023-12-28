@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const gulp = require('gulp');
 const gulpCleanCss = require('gulp-cleaner-css');
-const gulpHtmlMinify = require('gulp-html-minifier');
+const gulpHtmlMinify = require('gulp-htmlmin');
 const { pipeline } = require('readable-stream');
 const { addCspHashes, compilePages, buildSitemap } = require('./gulp-helpers');
 
