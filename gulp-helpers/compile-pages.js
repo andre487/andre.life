@@ -28,7 +28,9 @@ module.exports = through.obj((file, encoding, callback) => {
 async function compilePage(file) {
     const {pageName, context} = await getPageContext(file);
 
-    const pageHtml = handlebars.compile(file.contents.toString())(context);
+    const pageHtml = handlebars
+        .compile(file.contents.toString())(context)
+        .normalize('NFC');
 
     const result = new Vinyl(file);
     result.basename = `${pageName}.html`;
