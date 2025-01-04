@@ -61,14 +61,14 @@
     padding: 0;
 }
 
-.literature__link {
+.literature__links-item {
     font-size: 0.8rem;
     display: inline-block;
     vertical-align: baseline;
     margin-right: 0.5rem;
 }
 
-.literature__link:last-of-type {
+.literature__links-item:last-of-type {
     margin-right: 0;
 }
 

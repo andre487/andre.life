@@ -82,15 +82,21 @@
                                 </div>
                                 <ul class="literature__links">
                                     {{#if this.litResLink}}
-                                        <li class="literature__link literature__link_litres">
-                                            <a href="{{this.litResLink}}" target="_blank" rel="noopener">
+                                        <li class="literature__links-item">
+                                            <a href="{{this.litResLink}}"
+                                               class="literature__link literature__link_litres"
+                                               target="_blank"
+                                               rel="noopener">
                                                 LitRes
                                             </a>
                                         </li>
                                     {{/if}}
                                     {{#if this.prozaLink}}
-                                        <li class="literature__link literature__link_proza">
-                                            <a href="{{this.prozaLink}}" target="_blank" rel="noopener">
+                                        <li class="literature__links-item">
+                                            <a href="{{this.prozaLink}}"
+                                               class="literature__link literature__link_proza"
+                                               target="_blank"
+                                               rel="noopener">
                                                 Проза.ру
                                             </a>
                                         </li>
