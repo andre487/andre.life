@@ -52,7 +52,7 @@
                     </a>
                 </h2>
             </header>
-            <ul class="literature">
+            <ul class="literature" id="literature-container">
                 {{#each literature}}
                     <li class="literature__item">
                         <article class="literature__story">
@@ -82,14 +82,14 @@
                                 </div>
                                 <ul class="literature__links">
                                     {{#if this.litResLink}}
-                                        <li class="literature__link">
+                                        <li class="literature__link literature__link_litres">
                                             <a href="{{this.litResLink}}" target="_blank" rel="noopener">
                                                 LitRes
                                             </a>
                                         </li>
                                     {{/if}}
                                     {{#if this.prozaLink}}
-                                        <li class="literature__link">
+                                        <li class="literature__link literature__link_proza">
                                             <a href="{{this.prozaLink}}" target="_blank" rel="noopener">
                                                 Проза.ру
                                             </a>
@@ -170,5 +170,28 @@
                 {{/each}}
             </ul>
         </section>
+
+        {{#if addMetrika}}
+            <script>
+                document.getElementById('literature-container').addEventListener('click', function(e) {
+                    if (typeof ym !== 'function') {
+                        return;
+                    }
+
+                    var className = e.target.className || '';
+                    if (className.indexOf('literature__link') == -1) {
+                        return;
+                    }
+
+                    if (className.indexOf('literature__link_litres') > -1) {
+                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_LITRES');
+                    } else if (className.indexOf('literature__link_proza') > -1) {
+                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_PROZA');
+                    } else {
+                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_OTHER');
+                    }
+                });
+            </script>
+        {{/if}}
     {{/content}}
 {{/extend}}
