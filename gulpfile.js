@@ -15,7 +15,9 @@ const {
     SRC_DIR,
     BUILD_DIR,
     PROJECT_DIR,
-    YT_DATA_DIR, ASSET_DIR,
+    YT_DATA_DIR,
+    ASSET_DIR,
+    STORY_COVERS_DIR,
 } = require('./gulp-helpers/consts');
 
 const pagesPaths = path.join(SRC_DIR, 'templates', 'pages', '*.hbs');
@@ -29,7 +31,7 @@ function removeBuildDir() {
 
 function fetchYouTubeData() {
     return pipeline(
-        gulp.src(pagesPaths),
+        gulp.src(pagesPaths, {encoding: false}),
         getYouTubeData,
         gulp.dest(YT_DATA_DIR),
     );
@@ -37,7 +39,7 @@ function fetchYouTubeData() {
 
 function buildPages() {
     return pipeline(
-        gulp.src(pagesPaths),
+        gulp.src(pagesPaths, {encoding: false}),
         compilePages,
         gulpHtmlMinify({
             minifyCSS: true,
@@ -63,7 +65,7 @@ function buildPages() {
 
 async function buildCss() {
     return pipeline(
-        gulp.src(path.join(ASSET_DIR, '**', '*.css')),
+        gulp.src(path.join(ASSET_DIR, '**', '*.css'), {encoding: false}),
         gulpCleanCss(),
         gulp.dest(path.join(BUILD_DIR, 'assets')),
     );
@@ -76,14 +78,24 @@ async function copyImages() {
             path.join(ASSET_DIR, '*.jpg'),
             path.join(YT_DATA_DIR, '*.png'),
             path.join(YT_DATA_DIR, '*.jpg'),
-        ]),
+        ], {encoding: false}),
         gulp.dest(path.join(BUILD_DIR, 'assets')),
+    );
+}
+
+async function copyStoryCovers() {
+    return pipeline(
+        gulp.src([
+            path.join(STORY_COVERS_DIR, '*.png'),
+            path.join(STORY_COVERS_DIR, '*.jpg'),
+        ], {encoding: false}),
+        gulp.dest(path.join(BUILD_DIR, 'assets', 'story-covers')),
     );
 }
 
 function copyRootFiles() {
     return pipeline(
-        gulp.src(path.join(PROJECT_DIR, 'src', 'root-files', '*')),
+        gulp.src(path.join(PROJECT_DIR, 'src', 'root-files', '*'), {encoding: false}),
         gulp.dest(BUILD_DIR),
     );
 }
@@ -93,6 +105,7 @@ const build = gulp.series(
     gulp.parallel(
         buildCss,
         copyImages,
+        copyStoryCovers,
         copyRootFiles,
     ),
     buildPages,

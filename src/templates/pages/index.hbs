@@ -44,6 +44,65 @@
             </p>
         </section>
 
+        <section class="document-section" lang="ru">
+            <header>
+                <h2 class="document-section__header">
+                    <a id="literature" href="#literature" class="anchor-link">
+                        Литература
+                    </a>
+                </h2>
+            </header>
+            <ul class="literature">
+                {{#each literature}}
+                    <li class="literature__item">
+                        <article class="literature__story">
+                            <h3 class="literature__title">
+                                {{{this.title}}}
+                            </h3>
+                            <img
+                                class="literature__cover"
+                                src="{{storyCover this.cover}}"
+                                alt='Обложка для книги "{{{this.title}}}"'
+                                width="180"
+                                height="180">
+                            <div class="literature__info">
+                                <div class="literature__published">
+                                    {{this.published}}
+                                </div>
+                                <div class="literature__type">
+                                    {{{this.type}}}
+                                </div>
+                                {{#if this.cycle}}
+                                    <div class="literature__cycle">
+                                        Цикл: {{{this.cycle}}}
+                                    </div>
+                                {{/if}}
+                                <div class="literature__annotation">
+                                    {{{this.annotation}}}
+                                </div>
+                                <ul class="literature__links">
+                                    {{#if this.litResLink}}
+                                        <li class="literature__link">
+                                            <a href="{{this.litResLink}}" target="_blank" rel="noopener">
+                                                LitRes
+                                            </a>
+                                        </li>
+                                    {{/if}}
+                                    {{#if this.prozaLink}}
+                                        <li class="literature__link">
+                                            <a href="{{this.prozaLink}}" target="_blank" rel="noopener">
+                                                Проза.ру
+                                            </a>
+                                        </li>
+                                    {{/if}}
+                                </ul>
+                            </div>
+                        </article>
+                    </li>
+                {{/each}}
+            </ul>
+        </section>
+
         <section class="document-section">
             <header>
                 <h2 class="document-section__header">

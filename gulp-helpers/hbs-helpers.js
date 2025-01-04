@@ -16,7 +16,43 @@ module.exports = function(handlebars) {
         return BASE_URL_PATH + snakeCasePage + '.html';
     });
 
-    handlebars.registerHelper('asset', function(file) {
+    handlebars.registerHelper('asset', assetFunc);
+
+    handlebars.registerHelper('storyCover', function(file) {
+        return assetFunc('story-covers/' + file);
+    });
+
+    handlebars.registerHelper('ifEquals', function(a, b, ops) {
+        return a === b ? ops.fn(this) : ops.inverse(this);
+    });
+
+    handlebars.registerHelper('ifNotEquals', function(a, b, ops) {
+        return a !== b ? ops.fn(this) : ops.inverse(this);
+    });
+
+    handlebars.registerHelper('jsonDump', function(data) {
+        console.dir(data);
+        return JSON.stringify(data, null, 2);
+    });
+
+    handlebars.registerHelper('varDump', function(data) {
+        console.dir(data);
+
+        let tp = typeof data;
+        if (data === null) {
+            tp = 'null';
+        }
+
+        let res = tp;
+        if (tp == 'object') {
+            res += `<${data.constructor.name}>`;
+        }
+        res += ': ' + JSON.stringify(data, null, 2);
+
+        return res;
+    });
+
+    function assetFunc(file) {
         let version = assetCache[file];
         if (!version) {
             let filePath = path.join(BUILD_DIR, 'assets', file);
@@ -39,13 +75,5 @@ module.exports = function(handlebars) {
             version = assetCache[file] = num.toString(36);
         }
         return `${BASE_URL_PATH}assets/${file}?v=${version}`;
-    });
-
-    handlebars.registerHelper('ifEquals', function(a, b, ops) {
-        return a === b ? ops.fn(this) : ops.inverse(this);
-    });
-
-    handlebars.registerHelper('ifNotEquals', function(a, b, ops) {
-        return a !== b ? ops.fn(this) : ops.inverse(this);
-    });
+    }
 };
