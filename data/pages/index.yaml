@@ -9,6 +9,9 @@ socialNetworks:
   - title: LitRes
     login: andrey-prokopuk
     url: https://www.litres.ru/author/andrey-prokopuk/
+  - title: author.today
+    login: andre487
+    url: https://author.today/u/andre487
   - title: Проза.ру
     login: andre487
     url: https://proza.ru/avtor/andre487
@@ -42,6 +45,7 @@ literature:
     type: Сиквел и приквел сказки
     litResLink: null
     prozaLink: https://proza.ru/2025/01/03/928
+    authorTodayLink: https://author.today/work/408918
   - title: Золушка и философский камень
     cover: cinderella.png
     cycle: null
@@ -52,6 +56,7 @@ literature:
     type: Сказочная байка
     litResLink: https://www.litres.ru/71475016/
     prozaLink: https://proza.ru/2024/12/27/942
+    authorTodayLink: https://author.today/work/408919
   - title: Станция Северная
     cover: stanciya-severnaya.png
     cycle: Иллюзии
@@ -62,6 +67,7 @@ literature:
     type: Научно-фантастическая сказка
     litResLink: null
     prozaLink: https://proza.ru/2025/01/04/1294
+    authorTodayLink: https://author.today/work/408917
   - title: Станция Южная
     cover: stanciya-yuzhnaya.png
     cycle: Иллюзии
@@ -73,6 +79,7 @@ literature:
     type: Абсурдно-реалистическая сказка
     litResLink: https://www.litres.ru/71444002/
     prozaLink: https://proza.ru/2024/12/27/1292
+    authorTodayLink: https://author.today/work/408910
 twitterThreads:
   - link: https://twitter.com/Andre_487/status/1391841212601077764
     published: 10.05.2021

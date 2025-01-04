@@ -91,6 +91,16 @@
                                             </a>
                                         </li>
                                     {{/if}}
+                                    {{#if this.authorTodayLink}}
+                                        <li class="literature__links-item">
+                                            <a href="{{this.authorTodayLink}}"
+                                               class="literature__link literature__link_author-today"
+                                               target="_blank"
+                                               rel="noopener">
+                                                author.today
+                                            </a>
+                                        </li>
+                                    {{/if}}
                                     {{#if this.prozaLink}}
                                         <li class="literature__links-item">
                                             <a href="{{this.prozaLink}}"
@@ -193,6 +203,8 @@
                         ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_LITRES');
                     } else if (className.indexOf('literature__link_proza') > -1) {
                         ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_PROZA');
+                    } else if (className.indexOf('literature__link_author-today') > -1) {
+                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_AUTHOR_TODAY');
                     } else {
                         ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_OTHER');
                     }
