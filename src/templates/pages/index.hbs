@@ -21,9 +21,8 @@
             <ul>
                 {{#each socialNetworks}}
                     <li>
-                        {{this.title}}:
-                        <a href="{{this.url}}" target="_blank" rel="noopener">
-                            {{this.login}}
+                        <a href="{{this.url}}" target="_blank" rel="noopener" title="{{this.login}}">
+                            {{this.title}}
                         </a>
                     </li>
                 {{/each}}
