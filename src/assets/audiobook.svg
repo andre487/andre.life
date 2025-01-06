@@ -1,0 +1,21 @@
+<svg class="literature__audiobook-pic" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="128" height="128" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Обложка книги -->
+    <rect x="10" y="12" width="32" height="40" fill="none" stroke="currentColor" />
+    <line x1="10" y1="12" x2="10" y2="52" stroke="currentColor" />
+    <line x1="42" y1="12" x2="42" y2="52" stroke="currentColor" />
+
+    <!-- Страницы книги -->
+    <line x1="14" y1="18" x2="38" y2="18" stroke="currentColor" />
+    <line x1="14" y1="22" x2="38" y2="22" stroke="currentColor" />
+    <line x1="14" y1="26" x2="38" y2="26" stroke="currentColor" />
+    <line x1="14" y1="30" x2="38" y2="30" stroke="currentColor" />
+    <line x1="14" y1="34" x2="38" y2="34" stroke="currentColor" />
+    <line x1="14" y1="38" x2="38" y2="38" stroke="currentColor" />
+    <line x1="14" y1="42" x2="38" y2="42" stroke="currentColor" />
+    <line x1="14" y1="46" x2="38" y2="46" stroke="currentColor" />
+
+    <!-- Звуковые волны -->
+    <path d="M48 22c2 2 2 6 0 8" stroke="currentColor" fill="none" />
+    <path d="M52 18c3 3 3 10 0 13" stroke="currentColor" fill="none" />
+    <path d="M56 14c4 4 4 14 0 18" stroke="currentColor" fill="none" />
+</svg>

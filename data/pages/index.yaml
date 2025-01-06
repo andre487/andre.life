@@ -70,10 +70,11 @@ literature:
       Исследование осознанных сновидений ведёт героя к загадочной станции «Северная»,
       где переплетаются воспоминания, страхи и поиск смысла жизни.
     published: 25.12.2024
-    type: Научно-фантастическая сказка
-    litResLink: null
+    type: Научно-фантастическая повесть
+    litResLink: https://www.litres.ru/71506591/
     prozaLink: https://proza.ru/2025/01/04/1294
     authorTodayLink: https://author.today/work/408917
+    audio: true
   - title: Станция Южная
     cover: stanciya-yuzhnaya.png
     cycle: Иллюзии

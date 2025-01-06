@@ -34,9 +34,23 @@
 }
 
 .literature__published {
+    position: relative;
     margin: 0.4rem 0;
     color: var(--color-blue-grey-300);
     font-size: 0.8rem;
+}
+
+.literature__published.literature__published_audio {
+    padding-right: 1.5rem;
+}
+
+.literature__audiobook-pic {
+    display: inline-block;
+    vertical-align: bottom;
+    width: 1rem;
+    height: 1rem;
+    position: relative;
+    top: 0.08rem;
 }
 
 .literature__type {
