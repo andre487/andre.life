@@ -93,13 +93,13 @@
                                             </a>
                                         </li>
                                     {{/if}}
-                                    {{#if this.authorTodayLink}}
+                                    {{#if this.ozonLink}}
                                         <li class="literature__links-item">
-                                            <a href="{{this.authorTodayLink}}"
+                                            <a href="{{this.ozonLink}}"
                                                class="literature__link literature__link_author-today"
                                                target="_blank"
                                                rel="noopener">
-                                                author.today
+                                                OZON
                                             </a>
                                         </li>
                                     {{/if}}
@@ -110,6 +110,16 @@
                                                target="_blank"
                                                rel="noopener">
                                                 Проза.ру
+                                            </a>
+                                        </li>
+                                    {{/if}}
+                                    {{#if this.authorTodayLink}}
+                                        <li class="literature__links-item">
+                                            <a href="{{this.authorTodayLink}}"
+                                               class="literature__link literature__link_author-today"
+                                               target="_blank"
+                                               rel="noopener">
+                                                author.today
                                             </a>
                                         </li>
                                     {{/if}}
@@ -139,25 +149,27 @@
             </ul>
         </section>
 
-        <section class="document-section" lang="ru">
-            <header>
-                <h2 class="document-section__header">
-                    <a id="twitter-threads" href="#twitter-threads" class="anchor-link">
-                        Пространные рассказы в&nbsp;Твиттере
-                    </a>
-                </h2>
-            </header>
-            <ul class="twitter-threads">
-                {{#each twitterThreads}}
-                    <li>
-                        <span class="twitter-threads__published">{{this.published}}</span>
-                        <a href="{{this.link}}" target="_blank" rel="noopener">
-                            {{{this.title}}}
+        {{#if twitterThreads}}
+            <section class="document-section" lang="ru">
+                <header>
+                    <h2 class="document-section__header">
+                        <a id="twitter-threads" href="#twitter-threads" class="anchor-link">
+                            Пространные рассказы в&nbsp;Твиттере
                         </a>
-                    </li>
-                {{/each}}
-            </ul>
-        </section>
+                    </h2>
+                </header>
+                <ul class="twitter-threads">
+                    {{#each twitterThreads}}
+                        <li>
+                            <span class="twitter-threads__published">{{this.published}}</span>
+                            <a href="{{this.link}}" target="_blank" rel="noopener">
+                                {{{this.title}}}
+                            </a>
+                        </li>
+                    {{/each}}
+                </ul>
+            </section>
+        {{/if}}
 
         <section class="document-section" lang="ru">
             <header>
