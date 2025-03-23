@@ -79,7 +79,7 @@ literature:
     litResLink: https://www.litres.ru/71505037/
     prozaLink: https://proza.ru/2025/01/03/928
     authorTodayLink: https://author.today/work/408918
-    audio: true
+    audio: false
   - title: Золушка и философский камень
     cover: cinderella.png
     cycle: null
