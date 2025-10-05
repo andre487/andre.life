@@ -3,24 +3,18 @@ socialText: Tech talks, Twitter threads and social networks
 summary: >-
   Hello! My&nbsp;name is&nbsp;Andrey. I'm&nbsp;a&nbsp;software developer and a&nbsp;writer&nbsp;(a&nbsp;little)
 socialNetworks:
-  - title: GitHub
-    login: andre487
-    url: https://github.com/andre487
-  - title: X (Twitter)
-    login: Andre_487
-    url: https://x.com/Andre_487
-  - title: Instagram
-    login: andre_487
-    url: https://www.instagram.com/andre_487/
+  - title: Telegram
+    login: project_487
+    url: https://t.me/project_487
   - title: LitRes
     login: Андрей Прокопюк
     url: https://www.litres.ru/author/andrey-prokopuk/
   - title: Проза.ру
     login: andre487
     url: https://proza.ru/avtor/andre487
-  - title: Author.Today
+  - title: GitHub
     login: andre487
-    url: https://author.today/u/andre487/
+    url: https://github.com/andre487
 techTalks:
   - link: https://youtu.be/Whm2FMBIgA0
     autoSnippet: true
@@ -80,28 +74,3 @@ literature:
     prozaLink: https://proza.ru/2025/01/03/928
     authorTodayLink: https://author.today/work/408918
     audio: true
-  - title: Золушка и философский камень
-    cover: cinderella.png
-    cycle: null
-    annotation: |
-      Сатира на классическую сказку о Золушке: жестокость, философский камень и божественное вмешательство в смешной,
-      мрачной и неожиданной интерпретации.
-    published: 27.12.2024
-    type: Сказочная байка
-    litResLink: https://www.litres.ru/71475016/
-    prozaLink: https://proza.ru/2024/12/27/942
-    authorTodayLink: https://author.today/work/408919
-    audio: true
-#twitterThreads:
-#  - link: https://twitter.com/Andre_487/status/1391841212601077764
-#    published: 10.05.2021
-#    title: Про&nbsp;внешний периметр в&nbsp;архитектуре веб-страниц
-#  - link: https://twitter.com/Andre_487/status/1378448835656220680
-#    published: 03.04.2021
-#    title: Об&nbsp;опыте руководства
-#  - link: https://twitter.com/Andre_487/status/1377579565711818756
-#    published: 01.04.2021
-#    title: Об&nbsp;эксперименте с&nbsp;Service&nbsp;Worker на&nbsp;Поиске&nbsp;Яндекса
-#  - link: https://twitter.com/Andre_487/status/1366027297904594945
-#    published: 28.02.2021
-#    title: О&nbsp;том, как&nbsp;покинул пост руководителя команды скорости
