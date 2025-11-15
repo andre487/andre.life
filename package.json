@@ -39,7 +39,7 @@
     "handlebars-layouts": "^3.1.4",
     "http-server": "^14.1.1",
     "husky": "^8.0.3",
-    "js-yaml": "^4.1.0",
+    "js-yaml": "^4.1.1",
     "moment": "^2.30.0",
     "node-fetch": "^2.7.0",
     "node-html-parser": "^6.1.12",
