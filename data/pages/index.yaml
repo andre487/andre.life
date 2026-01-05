@@ -1,7 +1,11 @@
-pageHeader: Andrey Prokopyuk
+lang: ru
+pageHeader: Андрей Прокопюк
 socialText: Tech talks, Twitter threads and social networks
 summary: >-
-  Hello! My&nbsp;name is&nbsp;Andrey. I'm&nbsp;a&nbsp;software developer and a&nbsp;writer&nbsp;(a&nbsp;little)
+  Привет!<br>
+  Я&nbsp;Андрей, разработчик (и немного писатель).<br>
+  Работаю в&nbsp;Яндекс&nbsp;Переводчике fullstack-разработчиком,
+  пишу рассказы, повести и веду Telegram-канал.
 socialNetworks:
   - title: Telegram
     login: project_487

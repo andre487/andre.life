@@ -1,8 +1,8 @@
 lang: ru
-pageSubtitle: Wish list
-socialText: Wish list
+pageSubtitle: Виш-лист
+socialText: Виш-лист
 socialPic: amazing-horse.png
-pageHeader: Wish list
+pageHeader: Виш-лист
 wishList:
   - title: Сходить в бар
     link: >-
