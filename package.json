@@ -32,7 +32,7 @@
     "eslint-config-google": "^0.14.0",
     "glob": "^10.3.10",
     "gulp": "^5.0.0",
-    "gulp-cleaner-css": "^4.3.2",
+    "gulp-cleaner-css": "^5.0.0",
     "gulp-cli": "^3.0.0",
     "gulp-htmlmin": "^5.0.1",
     "handlebars": "^4.7.8",
