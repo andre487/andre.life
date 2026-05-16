@@ -29,6 +29,7 @@
             </ul>
         </section>
 
+        {{#if literature}}
         <section class="document-section" lang="ru">
             <header>
                 <h2 class="document-section__header">
@@ -129,6 +130,7 @@
                 {{/each}}
             </ul>
         </section>
+        {{/if}}
 
         <section class="document-section">
             <header>
@@ -140,35 +142,13 @@
             </header>
             <ul>
                 <li>
-                    <a rel="noopener" target="_blank" href="https://life.underlime.net">Underlime Game of Life</a>
+                    <a rel="noopener" target="_blank" href="https://life.underlime.net?utm_source=andre.life">Underlime Game of Life</a>
                 </li>
                 <li>
-                    <a rel="noopener" target="_blank" href="https://underlime.net">Underlime museum</a>
+                    <a rel="noopener" target="_blank" href="https://underlime.net?utm_source=andre.life">Underlime museum</a>
                 </li>
             </ul>
         </section>
-
-        {{#if twitterThreads}}
-            <section class="document-section" lang="ru">
-                <header>
-                    <h2 class="document-section__header">
-                        <a id="twitter-threads" href="#twitter-threads" class="anchor-link">
-                            Пространные рассказы в&nbsp;Твиттере
-                        </a>
-                    </h2>
-                </header>
-                <ul class="twitter-threads">
-                    {{#each twitterThreads}}
-                        <li>
-                            <span class="twitter-threads__published">{{this.published}}</span>
-                            <a href="{{this.link}}" target="_blank" rel="noopener">
-                                {{{this.title}}}
-                            </a>
-                        </li>
-                    {{/each}}
-                </ul>
-            </section>
-        {{/if}}
 
         <section class="document-section" lang="ru">
             <header>
@@ -209,34 +189,8 @@
                 </h2>
             </header>
             <p>
-                <!--suppress HtmlUnknownTarget -->
-                Да, у меня есть&nbsp;<a href="/wish-list.html">виш-лист</a>
+                Да, у&nbsp;меня есть <a href="/wish-list.html">виш-лист</a>
             </p>
         </section>
-
-        {{#if addMetrika}}
-            <script>
-                document.getElementById('literature-container').addEventListener('click', function(e) {
-                    if (typeof ym !== 'function') {
-                        return;
-                    }
-
-                    var className = e.target.className || '';
-                    if (className.indexOf('literature__link') == -1) {
-                        return;
-                    }
-
-                    if (className.indexOf('literature__link_litres') > -1) {
-                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_LITRES');
-                    } else if (className.indexOf('literature__link_proza') > -1) {
-                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_PROZA');
-                    } else if (className.indexOf('literature__link_author-today') > -1) {
-                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_AUTHOR_TODAY');
-                    } else {
-                        ym(32861550, 'reachGoal', 'LITERATURE_FOLLOW_OTHER');
-                    }
-                });
-            </script>
-        {{/if}}
     {{/content}}
 {{/extend}}

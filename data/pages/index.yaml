@@ -3,19 +3,16 @@ pageHeader: Андрей Прокопюк
 socialText: Страница со всякой информацией
 summary: >-
   Привет!<br>
-  Я&nbsp;Андрей, разработчик (и немного писатель).<br>
-  Работаю в&nbsp;Яндекс&nbsp;Переводчике fullstack-разработчиком,
-  пишу рассказы, повести и веду Telegram-канал.
+  Я&nbsp;Андрей, разработчик и&nbsp;немного писатель.<br>
+  Работаю в&nbsp;Яндексе fullstack-разработчиком, пишу рассказы.<br>
+  У&nbsp;меня есть Telegram и&nbsp;VK, есть кое-какие свои проекты на&nbsp;GitHub.
 socialNetworks:
   - title: Telegram
     login: project_487
     url: https://t.me/project_487
-  - title: LitRes
-    login: Андрей Прокопюк
-    url: https://www.litres.ru/author/andrey-prokopuk/
-  - title: Проза.ру
-    login: andre487
-    url: https://proza.ru/avtor/andre487
+  - title: VK
+    login: project_487
+    url: https://vk.ru/project_487
   - title: GitHub
     login: andre487
     url: https://github.com/andre487
@@ -39,42 +36,4 @@ techTalks:
     autoSnippet: true
     description:
       - Круглый стол Avito по&nbsp;скорости фронтенда с&nbsp;моим участием
-literature:
-  - title: Станция Южная
-    cover: stanciya-yuzhnaya.png
-    cycle: Иллюзии
-    annotation: |
-      Алиса отправляется в незнакомый город, чтобы найти брата,
-      оказавшись в сюрреалистическом мире иллюзий,
-      странных встреч и борьбы за возврат к реальности.
-    published: 16.12.2024
-    type: Абсурдно-реалистическая сказка
-    litResLink: https://www.litres.ru/71444002/
-    ozonLink: https://ozon.ru/t/YGnE4ep
-    prozaLink: https://proza.ru/2024/12/27/1292
-    authorTodayLink: https://author.today/work/408910
-    audio: true
-  - title: Станция Северная
-    cover: stanciya-severnaya.png
-    cycle: Иллюзии
-    annotation: |
-      Исследование осознанных сновидений ведёт героя к загадочной станции «Северная»,
-      где переплетаются воспоминания, страхи и поиск смысла жизни.
-    published: 25.12.2024
-    type: Научно-фантастическая повесть
-    litResLink: https://www.litres.ru/71506591/
-    ozonLink: https://ozon.ru/t/bM2nOww
-    prozaLink: https://proza.ru/2025/01/04/1294
-    authorTodayLink: https://author.today/work/408917
-    audio: true
-  - title: После станции Южная – моменты Алисы
-    cover: alice-moments.png
-    annotation: |
-      Алиса ценит размеренную жизнь, но воспоминания о путешествии к станции Южная не дают ей покоя.
-    cycle: Иллюзии
-    published: 2.01.2025
-    type: Сиквел и приквел сказки
-    litResLink: https://www.litres.ru/71505037/
-    prozaLink: https://proza.ru/2025/01/03/928
-    authorTodayLink: https://author.today/work/408918
-    audio: true
+literature: null
